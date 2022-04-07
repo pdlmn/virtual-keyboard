@@ -1,0 +1,25 @@
+.start-container {
+  padding: 48px 40px 0px;
+}
+
+.start-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.start-header-logo {
+  margin: 0 0 10px;
+}
+
+.nav-menu ul {
+  list-style: none;
+
+  display: flex;
+  gap: 35px;
+}
+
+.nav-menu a {
+  text-decoration: none;
+}
+
