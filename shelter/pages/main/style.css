@@ -11,7 +11,8 @@
 body {
   color: var(--color-light-xl);
   background: 
-radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%);
+    url('../../assets/images/noise_transparent.png'),
+    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%);
 }
 
 
@@ -88,7 +89,7 @@ radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%);
   font-family: 'Tinos';
   font-weight: normal;
   font-size: 44px;
-  line-height: 130%;
+  line-height: 124%;
   letter-spacing: 1.7px;
 
   width: 310px;
@@ -97,7 +98,7 @@ radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%);
 }
 
 .start-screen-subheading {
-  line-height: 160%;
+  line-height: 140%;
   letter-spacing: 0.15px;
 
   margin: 0;
