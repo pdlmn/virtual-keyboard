@@ -2,56 +2,133 @@
 
 :root {
   --color-primary: #F1CDB3;
+  --color-primary-light: #FDDCC4;
   --color-light-xl: #FFFFFF;
   --color-dark-s: #CDCDCD;
+  --color-dark-3xl: #292929;
 }
 
 body {
   color: var(--color-light-xl);
+  background: 
+radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%);
 }
+
+
 
 .start-container {
   padding: 48px 40px 0px;
-  background: 
-radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%);
+  margin: 0 auto;
+  width: 1280px;
+  height: 908px;
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 60px;
+  margin-bottom: 72px;
+  padding-top: 24px;
 }
 
 .header-logo {
   margin: 0 0 10px;
 
   font-family: 'Tinos';
+  font-size: 32px;
   color: var(--color-primary);
   font-weight: normal;
-  letter-spacing: 0.06rem;
+  letter-spacing: 0.16rem;
 }
 
 .header-sublogo {
-  letter-spacing: 0.01rem;
+  letter-spacing: 0.1em;
+  font-size: 14px;
 }
 
 .nav-menu ul {
   list-style: none;
   margin: 0;
-  padding: 0;
-
+  padding: 0px 3px 2px 0px;
   display: flex;
-  gap: 35px;
+  gap: 39px;
 }
 
 .link,
 .active-link {
   text-decoration: none;
+  color: var(--color-dark-s);
+}
+
+.link:hover,
+.active-link {
   color: var(--color-light-xl);
 }
 
 .active-link {
   border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 2px;
 }
 
+.start-screen,
+.start-screen-content {
+  display: flex;
+  gap: 42px;
+}
 
+.start-screen-content {
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 80px;
+
+}
+
+.start-screen-heading {
+  font-family: 'Tinos';
+  font-weight: normal;
+  font-size: 44px;
+  line-height: 130%;
+  letter-spacing: 1.7px;
+
+  width: 310px;
+  height: 114px;
+  margin: 0;
+}
+
+.start-screen-subheading {
+  line-height: 160%;
+  letter-spacing: 0.15px;
+
+  margin: 0;
+  width: 460px;
+}
+
+.start-screen-image {
+  width: 698px;
+  height: 728px;
+  margin-top: auto;
+}
+
+.btn-primary {
+  font-family: 'Tinos';
+  font-size: 19px;
+  letter-spacing: 1px;
+
+  width: 207px;
+  height: 52px;
+  border-radius: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--color-primary);
+  color: var(--color-dark-3xl);
+
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-light);
+}
