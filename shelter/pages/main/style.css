@@ -1,18 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Tinos&display=swap');
 
-:root {
-  --color-primary: #F1CDB3;
-  --color-primary-light: #FDDCC4;
-  --color-light-s: #FAFAFA;
-  --color-light-xl: #FFFFFF;
-  --color-light-l: #F6F6F6; 
-  --color-dark-s: #CDCDCD;
-  --color-dark-3xl: #292929;
-  --color-dark-xl: #4C4C4C;
-  --color-dark-3xl: #292929;
-  --color-dark-l: #545454;
-  --color-dark-m: #B2B2B2;
-}
 
 body {
   color: var(--color-light-xl);
@@ -21,71 +8,11 @@ body {
     radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%);
 }
 
-h1,
-h2,
-h3,
-p {
-  margin: 0;
-}
-
 .start-container {
   padding: 48px 40px 0px;
   margin: 0 auto;
   width: 1280px;
   height: 908px;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  margin-bottom: 72px;
-  padding-top: 24px;
-}
-
-.header-logo {
-  margin: 0 0 10px;
-
-  font-family: 'Tinos';
-  font-size: 32px;
-  color: var(--color-primary);
-  font-weight: normal;
-  letter-spacing: 0.16rem;
-}
-
-.header-sublogo {
-  letter-spacing: 0.1em;
-  font-size: 14px;
-}
-
-.nav-menu ul {
-  list-style: none;
-  padding: 0px 3px 2px 0px;
-  display: flex;
-  gap: 39px;
-}
-
-.link,
-.active-link {
-  text-decoration: none;
-  color: var(--color-dark-s);
-}
-
-.link:hover,
-.active-link {
-  color: var(--color-light-xl);
-}
-
-.active-link {
-  border-bottom: 2px solid var(--color-primary);
-  padding-bottom: 2px;
-}
-
-.start-screen,
-.start-screen-content {
-  display: flex;
-  gap: 42px;
 }
 
 .start-screen-content {
@@ -347,6 +274,7 @@ p {
   height: 282px;
 
   display: flex;
+  gap: 30px;
 }
 
 .donation-content {
@@ -398,6 +326,54 @@ p {
   line-height: 18px;
   font-style: italic;
   color: var(--color-dark-m);
+}
+
+.footer {
+  padding: 40px 40px 0 40px;
+
+}
+
+.footer-content-wrapper {
+  width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.contacts {
+  width: 278px;
+  height: 234px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.contact-heading {
+  font-family: 'Tinos';
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+}
+
+.contact-adress {
+  font-family: 'Tinos';
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+
+  color: var(--color-primary);
+}
+
+.contact {
+  display: flex;
+  gap: 20px;
+}
+
+.contact img {
+  align-self: center;
 }
 
 .btn-primary {

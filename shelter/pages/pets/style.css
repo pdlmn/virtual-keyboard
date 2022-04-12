@@ -1,0 +1,36 @@
+.header-wrapper {
+  height: 120px;
+}
+
+.header {
+  width: 1200px;
+  margin: auto;
+}
+
+.header-logo,
+.link {
+  color: var(--color-dark-l);
+}
+
+.header-sublogo,
+.active-link,
+.link:hover {
+  color: var(--color-dark-3xl);
+}
+
+.pets {
+  height: 1342px;
+}
+
+.pets-content-wrapper {
+  width: 1200px;
+  height: 1162px;
+  margin: auto;
+}
+
+.footer {
+}
+
+.contact-heading {
+
+}
