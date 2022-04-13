@@ -98,9 +98,6 @@ body {
 }
 
 .pets {
-  background-color: var(--color-light-l);
-  color: var(--color-dark-l);
-
   height: 877px;
 }
 
@@ -115,16 +112,6 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 60px;
-}
-
-.pets-heading {
-  font-family: 'Tinos';
-  font-size: 36px;
-  line-height: 130%;
-  letter-spacing: 0.06em;
-  text-align: center;
-
-  width: 400px;
 }
 
 .slider {
@@ -152,56 +139,6 @@ body {
 
 .button-arrow:hover {
   background-color: var(--color-primary);
-}
-
-.pet-cards {
-  width: 90%;
-
-  display: flex;
-  justify-content: space-around;
-}
-
-.card,
-.card-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.card {
-  width: 270px;
-  height: 435px;
-  border-radius: 9px;
-  background-color: var(--color-light-s);
-
-  cursor: pointer;
-}
-
-.card-image {
-  width: 270px;
-  height: 270px;
-}
-
-.card-body {
-  width: 100%;
-  height: 100%;
-  padding-top: 30px;
-
-  gap: 30px;
-}
-
-.card:hover .card-body {
-  background-color: var(--color-light-xl);
-}
-
-.card:hover .btn-secondary {
-  background-color: var(--color-primary);
-}
-
-.card-name {
-  font-size: 20px;
-  line-height: 23px;
-  letter-spacing: 0.06em;
 }
 
 .pets-btn {
@@ -399,21 +336,3 @@ body {
   background: var(--color-primary-light);
 }
 
-.btn-secondary {
-  font-family: 'Tinos';
-  font-size: 17px;
-  letter-spacing: 1.5px;
-  text-decoration: none;
-  color: var(--color-dark-3xl);
-
-  width: 187px;
-  height: 52px;
-  border: 2px solid #F1CDB3;
-  border-radius: 100px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  cursor: pointer;
-}
