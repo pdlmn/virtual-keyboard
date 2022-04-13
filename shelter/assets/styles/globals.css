@@ -135,6 +135,19 @@ p {
   height: 877px;
 }
 
+.pets-content-wrapper {
+  width: 1200px;
+  height: 804px;
+  padding-top: 90px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+
 .pets-heading {
   font-family: 'Tinos';
   font-size: 36px;
