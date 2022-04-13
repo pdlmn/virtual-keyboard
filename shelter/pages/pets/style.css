@@ -4,6 +4,7 @@
 
 .header {
   width: 1200px;
+  padding-top: 60px;
   margin: auto;
 }
 
@@ -20,12 +21,22 @@
 
 .pets {
   height: 1342px;
+  padding-top: 80px;
+  padding-bottom: 100px;
 }
 
 .pets-content-wrapper {
   width: 1200px;
   height: 1162px;
+  padding-top: 0;
   margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pets-heading {
 }
 
 .pet-cards {
@@ -36,6 +47,44 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 30px 40px;
+}
+
+.pets-navigation {
+  width: 340px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.pets-paginator {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  font-weight: bold;
+  background-color: var(--color-light-l);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pets-paginator:not(.inactive) {
+  cursor: pointer;
+}
+
+.pets-paginator:not(.inactive):hover {
+  background-color: var(--color-primary-light);
+  border: 2px solid var(--color-primary-light);
+}
+
+.inactive {
+  color: var(--color-dark-s);
+  border: 2px solid var(--color-dark-s);
+}
+
+.active {
+  background-color: var(--color-primary);
 }
 
 .footer {

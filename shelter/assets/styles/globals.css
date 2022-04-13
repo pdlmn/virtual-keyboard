@@ -198,11 +198,13 @@ p {
 }
 
 .card:hover .btn-secondary {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  border: 2px solid var(--color-primary-light);
 }
 
 .card-name {
   font-size: 20px;
+  font-weight: normal;
   line-height: 23px;
   letter-spacing: 0.06em;
 }
