@@ -198,7 +198,8 @@ p {
 }
 
 .card:hover .btn-secondary {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  border: 2px solid var(--color-primary-light);
 }
 
 .card-name {
