@@ -27,13 +27,45 @@ a {
   text-decoration: none;
 }
 
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.heading2,
+.heading3,
+.heading5 {
+  font-family: 'Tinos';
+  font-weight: normal;
+}
+
+.heading2 {
+  font-size: 44px;
+  line-height: 124%;
+  letter-spacing: 0.04em;
+}
+
+.heading3 {
+  font-size: 36px;
+  line-height: 130%;
+  letter-spacing: 0.08em;
+}
+
+.heading5 {
+  line-height: 110%;
+  letter-spacing: 0.06em;
+}
+
+.paragraph-l {
+  line-height: 150%;
+  letter-spacing: 0.15px;
+}
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 60px;
-  margin-bottom: 72px;
-  padding-top: 24px;
 }
 
 .header-logo {
@@ -71,12 +103,6 @@ a {
 .active-link {
   border-bottom: 2px solid var(--color-primary);
   padding-bottom: 2px;
-}
-
-.start-screen,
-.start-screen-content {
-  display: flex;
-  gap: 42px;
 }
 
 .footer {
