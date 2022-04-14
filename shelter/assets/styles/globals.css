@@ -97,11 +97,12 @@ a {
 
 .contacts {
   width: 278px;
-  height: 234px;
 
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  justify-content: space-between;
+  padding-top: 16px;
+  padding-bottom: 60px;
 }
 
 .contact-heading {
