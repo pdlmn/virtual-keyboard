@@ -69,16 +69,16 @@
   align-items: center;
 }
 
-.pets-paginator:not(.inactive) {
+.pets-paginator:not(:disabled) {
   cursor: pointer;
 }
 
-.pets-paginator:not(.inactive):hover {
+.pets-paginator:not(:disabled):hover {
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light);
 }
 
-.inactive {
+.pets-paginator:disabled {
   color: var(--color-dark-s);
   border: 2px solid var(--color-dark-s);
 }
