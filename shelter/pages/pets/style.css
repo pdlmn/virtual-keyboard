@@ -1,5 +1,10 @@
 .header-wrapper {
   height: 120px;
+
+  background-color: var(--color-light-xl);
+
+  position: sticky;
+  top: 0;
 }
 
 .header {
