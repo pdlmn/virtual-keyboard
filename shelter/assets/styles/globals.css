@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Tinos&display=swap');
-
 * {
   box-sizing: border-box;
 }
@@ -37,20 +35,20 @@ a {
 .heading2,
 .heading3,
 .heading5 {
-  font-family: 'Tinos';
+  font-family: 'Georgia';
   font-weight: normal;
 }
 
 .heading2 {
-  font-size: 44px;
-  line-height: 124%;
-  letter-spacing: 0.04em;
+  font-size: 43px;
+  line-height: 130%;
+  letter-spacing: 0.01em;
 }
 
 .heading3 {
   font-size: 36px;
-  line-height: 130%;
-  letter-spacing: 0.08em;
+  line-height: 125%;
+  letter-spacing: 0.03em;
 }
 
 .heading5 {
@@ -60,7 +58,7 @@ a {
 
 .paragraph-l {
   line-height: 150%;
-  letter-spacing: 0.15px;
+  letter-spacing: 0.1px;
 }
 
 .header {
@@ -73,7 +71,7 @@ a {
 .header-logo {
   margin: 0 0 10px;
 
-  font-family: 'Tinos';
+  font-family: 'Georgia';
   font-size: 32px;
   color: var(--color-primary);
   font-weight: normal;
@@ -115,35 +113,27 @@ a {
     radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%);
 }
 
-.footer-content-wrapper {
-  width: 1200px;
-  margin: 0 auto;
-
+.footer .wrapper {
   display: flex;
   justify-content: space-between;
 }
 
 .contacts {
-  width: 278px;
+  width: 300px;
+  height: 237px;
+  margin-top: 16px;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 16px;
-  padding-bottom: 60px;
 }
 
-.contact-heading {
-  font-family: 'Tinos';
-  font-weight: normal;
-  font-size: 35px;
-  line-height: 130%;
-  letter-spacing: 0.06em;
+.contacts .heading3 {
   color: var(--color-light-xl);
 }
 
 .contact-adress {
-  font-family: 'Tinos';
+  font-family: 'Georgia';
   font-size: 20px;
   line-height: 115%;
   letter-spacing: 0.06em;
@@ -163,30 +153,17 @@ a {
 .pets {
   background-color: var(--color-light-l);
   color: var(--color-dark-l);
-
-  height: 877px;
 }
 
-.pets-content-wrapper {
-  width: 1200px;
-  height: 804px;
-  padding-top: 90px;
-  margin: 0 auto;
+.pets .heading3 {
+  text-align: center;
+}
 
+.pets .wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 60px;
-}
-
-.pets-heading {
-  font-family: 'Tinos';
-  font-size: 36px;
-  line-height: 130%;
-  letter-spacing: 0.06em;
-  text-align: center;
-  font-weight: normal;
 }
 
 .pet-cards {
@@ -242,7 +219,7 @@ a {
 }
 
 .btn-secondary {
-  font-family: 'Tinos';
+  font-family: 'Georgia';
   font-size: 17px;
   letter-spacing: 1.5px;
   color: var(--color-dark-3xl);

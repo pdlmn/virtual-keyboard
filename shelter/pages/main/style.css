@@ -208,7 +208,7 @@ body {
   height: 43px;
   border-radius: 9px;
 
-  font-family: 'Tinos';
+  font-family: 'Georgia';
   font-size: 20px;
   letter-spacing: 0.06em;
   text-decoration: none;
@@ -234,58 +234,9 @@ body {
   color: var(--color-dark-m);
 }
 
-.footer {
-  padding: 40px 40px 0 40px;
-
-}
-
-.footer-content-wrapper {
-  width: 1200px;
-  margin: 0 auto;
-
-  display: flex;
-  justify-content: space-between;
-}
-
-.contacts {
-  width: 278px;
-  height: 234px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.contact-heading {
-  font-family: 'Tinos';
-  font-weight: normal;
-  font-size: 35px;
-  line-height: 130%;
-  letter-spacing: 0.06em;
-}
-
-.contact-adress {
-  font-family: 'Tinos';
-  font-size: 20px;
-  line-height: 115%;
-  letter-spacing: 0.06em;
-
-  color: var(--color-primary);
-}
-
-.contact {
-  display: flex;
-  gap: 20px;
-}
-
-.contact img {
-  align-self: center;
-}
-
 .btn-primary {
-  font-family: 'Tinos';
+  font-family: 'Georgia';
   font-size: 19px;
-  letter-spacing: 1px;
   text-decoration: none;
 
   height: 52px;
