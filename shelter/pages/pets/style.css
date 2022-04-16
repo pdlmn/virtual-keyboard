@@ -1,4 +1,4 @@
-.header-wrapper {
+.header {
   height: 120px;
 
   background-color: var(--color-light-xl);
@@ -7,11 +7,6 @@
   top: 0;
 
   display: flex;
-}
-
-.header {
-  width: 1200px;
-  margin: auto;
 }
 
 .header-logo,
