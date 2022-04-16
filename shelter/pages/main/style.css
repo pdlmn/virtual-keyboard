@@ -24,7 +24,6 @@ body {
   flex-direction: column;
   justify-content: center;
   padding-bottom: 80px;
-
 }
 
 .start-screen-content .heading2 {
@@ -256,3 +255,40 @@ body {
   background: var(--color-primary-light);
 }
 
+@media (max-width: 767px) {
+  .start-screen-wrapper {
+    height: 1165px;
+    padding: 4.2% 4% 0px;
+  }
+
+  .wrapper-header {
+    width: 708px;
+  }
+
+  .start-screen.wrapper {
+    width: 569px;
+    height: 1015px;
+
+    flex-direction: column;
+  }
+
+  .start-screen {
+    position: relative;
+  }
+
+  .start-screen-content {
+    padding: 0 55px;
+  }
+
+  .start-screen-content .btn-primary {
+    align-self: center;
+  }
+
+  .start-screen img {
+    width: 569px;
+    height: 593px;
+    position: absolute;
+    bottom: 0;
+    left: 12%;
+  }
+}
