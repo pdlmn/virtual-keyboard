@@ -463,4 +463,42 @@ body {
   .button-arrow-forward {
     order: 3;
   }
+
+  .help {
+    height: 745px;
+    padding: 13% 0 0 0;
+  }
+
+  .help .wrapper {
+    width: 100%;
+  }
+
+  .help .heading3 {
+    width: 75%;
+  }
+
+  .help-list {
+    padding: 13.6% 4%;
+
+    justify-content: flex-start;
+    column-gap: 11%;
+    row-gap: 30px;
+  }
+
+  .help-list > * {
+    width: 130px;
+    height: 87px;
+  }
+
+  .help-item {
+    gap: 22%;
+  }
+
+  .help-item-name {
+    font-size: 15px;
+  }
+
+  .help-icon {
+    height: 50px;
+  }
 }
