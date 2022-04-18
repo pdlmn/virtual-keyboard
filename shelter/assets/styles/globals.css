@@ -256,7 +256,29 @@ a {
 }
 
 @media (max-width: 768px) {
+  .wrapper-header,
   .pets .wrapper {
     width: 708px;
+  }
+
+  .footer {
+    padding: 0 30px;
+  }
+
+  .footer .wrapper {
+    width: 708px;
+
+    flex-direction: column;
+  }
+
+  .contacts-wrapper {
+    width: 100%;
+    padding: 15px 34px;
+  }
+
+  .footer-puppy {
+    margin: 46px auto 0 auto;
+
+    align-self: flex-end;
   }
 }

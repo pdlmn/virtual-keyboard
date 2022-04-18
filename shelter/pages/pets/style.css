@@ -81,3 +81,26 @@
 .active {
   background-color: var(--color-primary);
 }
+
+@media (max-width: 768px) {
+  .pets {
+    height: 1733px;
+  }
+
+  .pets .wrapper {
+    gap: 30px;
+  }
+
+  .pet-cards {
+    width: 82%;
+    padding-bottom: 10px;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+
+  .card:last-child,
+  .card:nth-last-child(2) {
+    display: none;
+  }
+}

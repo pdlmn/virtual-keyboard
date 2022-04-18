@@ -266,10 +266,6 @@ body {
     padding: 4.2% 4% 0px;
   }
 
-  .wrapper-header {
-    width: 708px;
-  }
-
   .start-screen.wrapper {
     width: 569px;
     height: 1015px;
@@ -365,26 +361,5 @@ body {
     height: 282px;
 
     gap: 20px;
-  }
-
-  .footer {
-    padding: 0 30px;
-  }
-
-  .footer .wrapper {
-    width: 708px;
-
-    flex-direction: column;
-  }
-
-  .contacts-wrapper {
-    width: 100%;
-    padding: 15px 34px;
-  }
-
-  .footer-puppy {
-    margin: 46px auto 0 auto;
-
-    align-self: flex-end;
   }
 }
