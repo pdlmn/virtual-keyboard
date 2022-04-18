@@ -282,4 +282,15 @@ a {
 
     align-self: flex-end;
   }
+
+  @media (max-width: 320px) {
+    .heading3 {
+      font-size: 25px;
+      letter-spacing: 0.06em;
+    }
+
+    .paragraph-l {
+      letter-spacing: 0.01em;
+    }
+  }
 }

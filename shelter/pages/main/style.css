@@ -403,4 +403,30 @@ body {
     width: 89%;
     height: 37.2%;
   }
+
+  .about {
+    height: 974px;
+    padding: 13.1% 7.8%;
+  }
+
+  .about .wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .about-content {
+    width: 100%;
+    padding: 0;
+  }
+
+  .about .heading3 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .about-image {
+    width: 96%;
+    height: 40%;
+  }
 }
