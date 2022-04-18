@@ -16,6 +16,10 @@
   --color-dark-m: #B2B2B2;
 }
 
+body {
+  font-family: Arial;
+}
+
 h1,
 h2,
 h3,
@@ -57,8 +61,8 @@ a {
 }
 
 .paragraph-l {
-  line-height: 150%;
-  letter-spacing: 0.1px;
+  line-height: 160%;
+  font-size: 15px;
 }
 
 .header {
