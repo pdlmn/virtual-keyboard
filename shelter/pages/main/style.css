@@ -82,7 +82,7 @@ body {
 }
 
 .pets .wrapper {
-  height: 773px;
+  height: 777px;
   padding-top: 80px;
 
   display: flex;
@@ -145,11 +145,12 @@ body {
 }
 
 .help-list {
-  width: 1026px;
+  padding: 0px 80px;
 
   display: flex;
   justify-content: center;
-  gap: 120px;
+  align-items: baseline;
+  gap: 122px;
   row-gap: 55px;
   flex-wrap: wrap;
 }
@@ -162,8 +163,10 @@ body {
 }
 
 .help-item-name {
-  font-size: 22px;
-  letter-spacing: 1px;
+  font-family: 'Georgia';
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  line-height: 115%;
 }
 
 .help-icon {
@@ -236,8 +239,9 @@ body {
 
 .btn-primary {
   font-family: 'Georgia';
-  font-size: 19px;
+  font-size: 18px;
   text-decoration: none;
+  letter-spacing: 0.03em;
 
   height: 52px;
   border-radius: 100px;
@@ -312,5 +316,33 @@ body {
 
   .about-image {
     order: 2;
+  }
+
+  .card:last-child {
+    display: none;
+  }
+
+  .help {
+    height: 779px;
+  }
+
+  .help .wrapper {
+    width: 630px;
+  }
+
+  .help-list {
+    padding: 60px 0px;
+    justify-content: space-evenly;
+    column-gap: 60px;
+    row-gap: 52px
+  }
+
+  .help-list > * {
+    height: 113px;
+    width: 170px;
+  }
+
+  .help-item {
+    gap: 32px;
   }
 }
