@@ -63,7 +63,7 @@ body {
 
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 26px;
   justify-content: space-between;
   padding-top: 14px;
 }
@@ -231,7 +231,11 @@ body {
   font-size: 12px;
   line-height: 18px;
   font-style: italic;
+  text-align: justify;
   color: var(--color-dark-m);
+
+  display: flex;
+  align-items: center;
 }
 
 .btn-primary {
@@ -500,5 +504,33 @@ body {
 
   .help-icon {
     height: 50px;
+  }
+
+  .donation {
+    height: 542.2px;
+    padding: 0;
+  }
+
+  .donation-content-wrapper {
+    padding: 13.5% 2.5% 13% 2.5%;
+  }
+
+  .donation-content {
+    width: 90%;
+  }
+
+  .donation-content .heading3,
+  .donation-content .heading5 {
+    text-align: center;
+  }
+
+  .donation-credit-card {
+    font-size: 15px;
+    width: 100%
+  }
+
+  .donation-dog {
+    width: 86%;
+    height: 30%;
   }
 }

@@ -65,6 +65,7 @@ a {
 .paragraph-l {
   line-height: 160%;
   font-size: 15px;
+  text-align: justify;
 }
 
 .header {
@@ -289,8 +290,8 @@ a {
       letter-spacing: 0.06em;
     }
 
-    .paragraph-l {
-      letter-spacing: 0.01em;
+    .heading5 {
+      letter-spacing: normal;
     }
   }
 }
