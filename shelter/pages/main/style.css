@@ -40,9 +40,10 @@ body {
 }
 
 .about {
+  height: 588px;
+
   background-color: var(--color-light-xl);
   color: var(--color-dark-xl);
-  height: 588px;
 }
 
 .about .wrapper {
@@ -290,5 +291,26 @@ body {
     position: absolute;
     bottom: 0;
     left: 12%;
+  }
+
+  .about {
+    height: 1048px;
+  }
+
+  .about .wrapper {
+    width: 437px;
+    height: 100%;
+    padding: 67px 0px 99px;
+
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about .wrapper {
+    flex-direction: column;
+  }
+
+  .about-image {
+    order: 2;
   }
 }
