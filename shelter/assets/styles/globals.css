@@ -73,7 +73,7 @@ a {
 }
 
 .header-logo {
-  margin: 0 0 7px;
+  margin: 0 0 8px;
 
   font-family: 'Georgia';
   font-size: 32px;
@@ -86,17 +86,18 @@ a {
   margin-left: 4px;
 
   letter-spacing: 0.1em;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .nav-menu ul {
-  padding: 0px 3px 2px;
+  padding: 0px 3px 5px;
   margin: 16px 0 18px;
 
+  font-size: 15px;
   list-style: none;
 
   display: flex;
-  gap: 39px;
+  gap: 35px;
 }
 
 .link,
