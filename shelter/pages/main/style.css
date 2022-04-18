@@ -345,4 +345,31 @@ body {
   .help-item {
     gap: 32px;
   }
+
+  .donation {
+    height: 783px;
+    padding: 80px 0 100px;
+  }
+
+  .donation-content-wrapper {
+    height: 100%;
+    width: 100%;
+
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+
+  .donation-content {
+    width: 50%;
+    height: 282px;
+
+    gap: 20px;
+  }
+
+  .footer .wrapper {
+    width: 708px;
+
+    flex-direction: column;
+  }
 }
