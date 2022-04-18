@@ -1,4 +1,4 @@
-.header-wrapper {
+.header {
   height: 120px;
 
   background-color: var(--color-light-xl);
@@ -7,11 +7,6 @@
   top: 0;
 
   display: flex;
-}
-
-.header {
-  width: 1200px;
-  margin: auto;
 }
 
 .header-logo,
@@ -31,15 +26,10 @@
   padding-bottom: 100px;
 }
 
-.pets-content-wrapper {
-  width: 1200px;
-  height: 1162px;
-  padding-top: 0;
-  margin: auto;
+.pets .wrapper {
+  height: 804px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  gap: 60px;
 }
 
 .pets-heading {
@@ -92,9 +82,25 @@
   background-color: var(--color-primary);
 }
 
-.footer {
-}
+@media (max-width: 768px) {
+  .pets {
+    height: 1733px;
+  }
 
-.contact-heading {
+  .pets .wrapper {
+    gap: 30px;
+  }
 
+  .pet-cards {
+    width: 82%;
+    padding-bottom: 10px;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+
+  .card:last-child,
+  .card:nth-last-child(2) {
+    display: none;
+  }
 }
