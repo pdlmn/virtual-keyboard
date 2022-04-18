@@ -27,12 +27,11 @@ body {
 }
 
 .start-screen-content .heading2 {
-  width: 310px;
-  height: 114px;
+  width: 70%;
 }
 
-.start-screen-content .paragraph-l {
-  width: 460px;
+.start-screen-puppy {
+  max-width: 100%;
 }
 
 .start-btn {
@@ -47,7 +46,7 @@ body {
 }
 
 .about .wrapper {
-  padding: 80px 175px;
+  padding: 6.2% 13.9%;
 
   display: flex;
   justify-content: space-between;
@@ -59,7 +58,7 @@ body {
 }
 
 .about-content {
-  width: 430px;
+  width: 50.6%;
   height: 380px;    
 
   display: flex;
@@ -70,11 +69,7 @@ body {
 }
 
 .about .heading3 {
-  width: 370px;
-}
-
-.about-content .paragraph-l {
-  width: 430px;
+  width: 70%;
 }
 
 .pets {
@@ -106,6 +101,8 @@ body {
   border-radius: 50%;
   margin: 0;
   padding: 0;
+
+  background: var(--color-light-l);
 
   display: flex;
   justify-content: center;
@@ -285,7 +282,7 @@ body {
     align-self: center;
   }
 
-  .start-screen img {
+  .start-screen-puppy {
     width: 569px;
     height: 593px;
     position: absolute;
@@ -312,6 +309,12 @@ body {
 
   .about-image {
     order: 2;
+  }
+
+  .pet-cards {
+    width: 82%;
+    display: flex;
+    justify-content: space-between;
   }
 
   .card:last-child {
@@ -361,5 +364,43 @@ body {
     height: 282px;
 
     gap: 20px;
+  }
+}
+
+@media (max-width: 320px) {
+  .wrapper {
+    
+  }
+
+  .start-screen-wrapper {
+    height: 823px;
+    padding: 9.2% 3% 0px;
+  }
+
+  .start-screen.wrapper {
+    width: 100%;
+  }
+
+  .heading2 {
+    font-size: 25px;
+    letter-spacing: 0.06em;
+  }
+
+  .start-screen-content {
+    width: 300px;
+    padding: 20% 0 0 0;
+
+    text-align: center;
+
+    align-items: center;
+  }
+
+  .start-screen-content .heading2 {
+    width: 75%;
+  }
+
+  .start-screen-puppy {
+    width: 89%;
+    height: 37.2%;
   }
 }
