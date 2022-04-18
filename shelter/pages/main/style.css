@@ -255,7 +255,7 @@ body {
   background: var(--color-primary-light);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .start-screen-wrapper {
     height: 1165px;
     padding: 4.2% 4% 0px;

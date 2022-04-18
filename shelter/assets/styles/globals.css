@@ -69,16 +69,18 @@ a {
 }
 
 .header-logo {
-  margin: 0 0 10px;
+  margin: 0 0 7px;
 
   font-family: 'Georgia';
   font-size: 32px;
   color: var(--color-primary);
   font-weight: normal;
-  letter-spacing: 0.16rem;
+  letter-spacing: 0.12rem;
 }
 
 .header-sublogo {
+  margin-left: 4px;
+
   letter-spacing: 0.1em;
   font-size: 14px;
 }
