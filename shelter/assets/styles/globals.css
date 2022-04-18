@@ -32,7 +32,8 @@ a {
 }
 
 .wrapper {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -64,6 +65,7 @@ a {
 .paragraph-l {
   line-height: 160%;
   font-size: 15px;
+  text-align: justify;
 }
 
 .header {
@@ -280,5 +282,16 @@ a {
     margin: 46px auto 0 auto;
 
     align-self: flex-end;
+  }
+
+  @media (max-width: 320px) {
+    .heading3 {
+      font-size: 25px;
+      letter-spacing: 0.06em;
+    }
+
+    .heading5 {
+      letter-spacing: normal;
+    }
   }
 }
