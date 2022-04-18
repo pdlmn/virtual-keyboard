@@ -86,8 +86,11 @@ a {
 }
 
 .nav-menu ul {
+  padding: 0px 3px 2px;
+  margin: 16px 0 18px;
+
   list-style: none;
-  padding: 0px 3px 2px 0px;
+
   display: flex;
   gap: 39px;
 }
