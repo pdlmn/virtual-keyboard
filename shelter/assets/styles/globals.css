@@ -11,7 +11,6 @@
   --color-dark-s: #CDCDCD;
   --color-dark-3xl: #292929;
   --color-dark-xl: #4C4C4C;
-  --color-dark-3xl: #292929;
   --color-dark-l: #545454;
   --color-dark-m: #B2B2B2;
 }
@@ -35,6 +34,10 @@ a {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+}
+
+.burger-menu {
+  display: none;
 }
 
 .heading2,
@@ -292,6 +295,84 @@ a {
 
     .heading5 {
       letter-spacing: normal;
+    }
+
+
+    .wrapper-header {
+      width: 100%;
+    }
+
+    .header nav {
+      display: none;
+    }
+
+    .burger-menu {
+      width: 30px;
+      height: 37px;
+      margin-right: 14.5%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    .burger-menu > * {
+      height: 2px;
+      width: 100%;
+      background-color: var(--color-primary);
+    }
+
+    .footer {
+      height: 809px;
+      padding: 10% 3% 0 3%;
+    }
+
+    .footer .wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .footer .heading3 {
+      text-align: center;
+    }
+
+    .contacts-wrapper {
+      height: 467px;
+      padding: 0;
+
+      flex-direction: column;
+    }
+
+    .contacts {
+      width: 100%;
+      height: 206px;
+      margin: 0;
+
+      align-items: center;
+    }
+
+    .contact {
+      align-items: center;
+      align-self: center;
+    }
+
+    .contacts-address {
+      height: 218px;
+    }
+
+    .contacts-address .contact {
+      width: 100%;
+    }
+
+    .contacts-address .heading3 {
+      width: 80%;
+    }
+
+    .footer-puppy {
+      width: 86.5%;
+      margin: 0;
+
+      align-self: center;
     }
   }
 }

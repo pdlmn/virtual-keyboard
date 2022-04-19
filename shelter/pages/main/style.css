@@ -372,10 +372,6 @@ body {
 }
 
 @media (max-width: 320px) {
-  .wrapper {
-    
-  }
-
   .start-screen-wrapper {
     height: 823px;
     padding: 9.2% 3% 0px;
@@ -401,6 +397,10 @@ body {
 
   .start-screen-content .heading2 {
     width: 75%;
+  }
+
+  .start-screen-content .paragraph-l {
+    text-align: center;
   }
 
   .start-screen-puppy {
