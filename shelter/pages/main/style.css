@@ -7,11 +7,10 @@ body {
 
 .start-screen-wrapper {
   padding: 4.7% 3% 0px;
-  height: 908px;
+}
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.start-screen {
+  margin-top: 5%;
 }
 
 .start-screen,
@@ -21,9 +20,10 @@ body {
 }
 
 .start-screen-content {
+  padding-bottom: 6.5%;
+
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 80px;
 }
 
 .start-screen-content .heading2 {
@@ -31,7 +31,7 @@ body {
 }
 
 .start-screen-puppy {
-  max-width: 100%;
+  max-width: 60%;
 }
 
 .start-btn {
@@ -120,16 +120,13 @@ body {
 }
 
 .help {
-  height: 611px;
-  padding: 80px 0 100px 0;
+  padding: 6.3% 0 3% 0;
 
   background-color: var(--color-light-xl);
   color: var(--color-dark-l);
 }
 
 .help .wrapper {
-  height: 431px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -142,7 +139,7 @@ body {
 }
 
 .help-list {
-  padding: 0px 80px;
+  padding: 5% 80px;
 
   display: flex;
   justify-content: center;
@@ -231,7 +228,6 @@ body {
   font-size: 12px;
   line-height: 18px;
   font-style: italic;
-  text-align: justify;
   color: var(--color-dark-m);
 
   display: flex;
@@ -261,10 +257,13 @@ body {
   background: var(--color-primary-light);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .start-screen-wrapper {
     height: 1165px;
     padding: 4.2% 4% 0px;
+
+    display: flex;
+    flex-direction: column;
   }
 
   .start-screen.wrapper {
@@ -272,10 +271,12 @@ body {
     height: 1015px;
 
     flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
   }
 
   .start-screen {
-    position: relative;
+    margin-top: 8.2%;
   }
 
   .start-screen-content {
@@ -287,10 +288,8 @@ body {
   }
 
   .start-screen-puppy {
-    width: 569px;
-    height: 593px;
-    position: absolute;
-    bottom: 0;
+    max-width: 100%;
+    position: relative;
     left: 12%;
   }
 
@@ -311,14 +310,20 @@ body {
     flex-direction: column;
   }
 
+  .about-content {
+    width: 98.2%;
+  }
+
   .about-image {
     order: 2;
   }
 
   .pet-cards {
     width: 82%;
+
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    gap: 7%;
   }
 
   .card:last-child {
@@ -447,6 +452,7 @@ body {
   .slider {
     justify-content: space-evenly;
     flex-wrap: wrap;
+    column-gap: 4%; 
   }
 
   .pet-cards {
@@ -527,6 +533,10 @@ body {
   .donation-credit-card {
     font-size: 15px;
     width: 100%
+  }
+
+  .donation-legal-info {
+    text-align: justify;
   }
 
   .donation-dog {

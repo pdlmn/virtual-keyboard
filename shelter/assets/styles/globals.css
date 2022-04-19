@@ -68,7 +68,6 @@ a {
 .paragraph-l {
   line-height: 160%;
   font-size: 15px;
-  text-align: justify;
 }
 
 .header {
@@ -260,14 +259,13 @@ a {
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .wrapper-header,
+@media (max-width: 1024px) {
   .pets .wrapper {
     width: 708px;
   }
 
   .footer {
-    padding: 0 30px;
+    padding: 0 3%;
   }
 
   .footer .wrapper {
@@ -297,9 +295,8 @@ a {
       letter-spacing: normal;
     }
 
-
-    .wrapper-header {
-      width: 100%;
+    .paragraph-l {
+      text-align: justify;
     }
 
     .header nav {
