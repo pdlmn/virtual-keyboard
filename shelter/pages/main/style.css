@@ -46,10 +46,14 @@ body {
 }
 
 .about .wrapper {
-  padding: 6.2% 13.9%;
-
   display: flex;
   justify-content: space-between;
+}
+
+.about-content-wrapper {
+  padding: 6.6% 14.8%;
+  display: flex;
+  gap: 14%;
 }
 
 .about-image {
