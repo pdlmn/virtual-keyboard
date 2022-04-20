@@ -1,10 +1,16 @@
-.header {
-  height: 120px;
-
+.wrapper-header {
   background-color: var(--color-light-xl);
 
   position: sticky;
   top: 0;
+}
+
+.wrapper-header .wrapper {
+  width: 95%;
+}
+
+.header {
+  height: 120px;
 
   display: flex;
 }
@@ -32,16 +38,15 @@
   gap: 60px;
 }
 
-.pets-heading {
-}
-
 .pet-cards {
   width: 100%;
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 30px 40px;
+  align-items: center;
+  justify-items: center;
+  gap: 30px 3%;
 }
 
 .pets-navigation {
@@ -86,7 +91,21 @@
   background-color: var(--color-primary);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1220px) {
+  .pet-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .card:nth-last-child(-n+2) {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper-header .wrapper {
+    max-width: 708px;
+  }
+
   .pets {
     height: 1733px;
   }
@@ -108,24 +127,28 @@
     display: none;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 744px) {
     .header {
-      padding: 0 3%;
+      padding: 0 .4%;
     }
 
     .burger-menu > * {
       background-color: var(--color-dark-3xl);
     }
 
+    .pets,
+    .pets .wrapper {
+      height: fit-content;
+    }
+
     .pets {
-      height: 1649px;
       padding-top: 14%;
     }
 
     .pets .wrapper {
       width: 100%;
 
-      gap: 5%;
+      gap: 42px;
     } 
 
     .pet-cards {
@@ -140,6 +163,7 @@
 
     .pets-navigation {
       width: 94%;
+      max-width: 350px;
     }
   }
 }
