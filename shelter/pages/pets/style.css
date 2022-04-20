@@ -59,6 +59,10 @@
   font-weight: bold;
   background-color: var(--color-light-l);
 
+  font-family: 'Georgia';
+  font-size: 20px;
+  font-weight: normal;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,5 +106,40 @@
   .card:last-child,
   .card:nth-last-child(2) {
     display: none;
+  }
+
+  @media (max-width: 320px) {
+    .header {
+      padding: 0 3%;
+    }
+
+    .burger-menu > * {
+      background-color: var(--color-dark-3xl);
+    }
+
+    .pets {
+      height: 1649px;
+      padding-top: 14%;
+    }
+
+    .pets .wrapper {
+      width: 100%;
+
+      gap: 5%;
+    } 
+
+    .pet-cards {
+      padding-bottom: .6%;
+
+      grid-template: 1fr 1fr 1fr / 1fr;
+    }
+
+    .card:nth-last-child(-n+5) {
+      display: none;
+    }
+
+    .pets-navigation {
+      width: 94%;
+    }
   }
 }

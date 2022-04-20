@@ -11,7 +11,6 @@
   --color-dark-s: #CDCDCD;
   --color-dark-3xl: #292929;
   --color-dark-xl: #4C4C4C;
-  --color-dark-3xl: #292929;
   --color-dark-l: #545454;
   --color-dark-m: #B2B2B2;
 }
@@ -35,6 +34,10 @@ a {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+}
+
+.burger-menu {
+  display: none;
 }
 
 .heading2,
@@ -65,7 +68,6 @@ a {
 .paragraph-l {
   line-height: 160%;
   font-size: 15px;
-  text-align: justify;
 }
 
 .header {
@@ -257,14 +259,13 @@ a {
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .wrapper-header,
+@media (max-width: 1024px) {
   .pets .wrapper {
     width: 708px;
   }
 
   .footer {
-    padding: 0 30px;
+    padding: 0 3%;
   }
 
   .footer .wrapper {
@@ -284,7 +285,7 @@ a {
     align-self: flex-end;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 744px) {
     .heading3 {
       font-size: 25px;
       letter-spacing: 0.06em;
@@ -292,6 +293,91 @@ a {
 
     .heading5 {
       letter-spacing: normal;
+    }
+
+    .paragraph-l {
+      text-align: justify;
+    }
+
+    .header nav {
+      display: none;
+    }
+
+    .burger-menu {
+      width: 30px;
+      height: 37px;
+      margin-right: 14.5%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    .burger-menu > * {
+      height: 2px;
+      width: 100%;
+      background-color: var(--color-primary);
+    }
+
+    .footer {
+      height: fit-content;
+      padding: 10% 3% 0 3%;
+    }
+
+    .footer .wrapper {
+      width: 100%;
+      height: 100%;
+
+      gap: 5%;
+    }
+
+    .footer .heading3 {
+      text-align: center;
+    }
+
+    .contacts-wrapper {
+      height: 467px;
+      padding: 0;
+
+      gap: 9%;
+
+      flex-direction: column;
+    }
+
+    .contacts {
+      width: 100%;
+      height: 206px;
+      margin: 0;
+
+      align-items: center;
+    }
+
+    .contact {
+      justify-content: center;
+      align-items: center;
+      align-self: center;
+    }
+
+    .contacts-address {
+      height: 218px;
+    }
+
+    .contacts-address .contact {
+      width: 100%;
+    }
+
+    .contacts-address .heading3 {
+      width: 80%;
+    }
+
+    .footer-puppy {
+      height: auto;
+      min-width: 260px;
+      margin: 0;
+      margin-top: 13%;
+      width: 45%;
+
+      align-self: center;
     }
   }
 }
