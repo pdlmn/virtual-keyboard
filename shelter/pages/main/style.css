@@ -543,16 +543,18 @@ body {
   }
 
   .donation {
-    height: 542.2px;
+    height: fit-content;
     padding: 0;
   }
 
   .donation-content-wrapper {
-    padding: 13.5% 2.5% 13% 2.5%;
+    padding: 13.5% 2.5% 15% 2.5%;
   }
 
   .donation-content {
     width: 90%;
+
+    align-items: center;
   }
 
   .donation-content .heading3,
@@ -562,7 +564,7 @@ body {
 
   .donation-credit-card {
     font-size: 15px;
-    width: 100%
+    width: 281px;
   }
 
   .donation-legal-info {
@@ -570,7 +572,7 @@ body {
   }
 
   .donation-dog {
-    width: 86%;
-    height: 30%;
+    width: 87%;
+    height: auto;
   }
 }
