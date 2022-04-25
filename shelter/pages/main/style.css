@@ -392,7 +392,7 @@ body {
   }
 }
 
-@media (max-width: 744px) {
+@media (max-width: 767px) {
   .start-screen-wrapper {
     height: fit-content;
     padding: 9.2% 2% 0px;
@@ -489,7 +489,7 @@ body {
 
   .pet-cards {
     width: 100%;
-    margin-bottom: 7%;
+    margin-bottom: 22px;
 
     justify-content: center;
   }

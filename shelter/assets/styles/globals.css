@@ -285,7 +285,7 @@ a {
     align-self: flex-end;
   }
 
-  @media (max-width: 744px) {
+  @media (max-width: 767px) {
     .heading3 {
       font-size: 25px;
       letter-spacing: 0.06em;
@@ -305,7 +305,7 @@ a {
 
     .burger-menu {
       width: 30px;
-      height: 37px;
+      height: 38px;
       margin-right: 14.5%;
 
       display: flex;
