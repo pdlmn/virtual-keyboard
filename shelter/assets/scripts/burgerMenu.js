@@ -15,25 +15,35 @@ const burgerMenu = (() => {
     })
   }
 
-  const rotateBurgerButton = () => {
-    button.classList.toggle('rotated')
-  }
-
   const toggleMenu = () => {
     rotateBurgerButton()
     toggleMainLogo()
+    removeMainLogo()
     toggleMobileLogo()
+    toggleScroll()
     modalWrapper.classList.toggle('opacity-0')
     menu.classList.toggle('on-screen')
     isVisible = !isVisible
+  }
+
+  const rotateBurgerButton = () => {
+    button.classList.toggle('rotated')
   }
 
   const toggleMainLogo = () => {
     mainLogo.classList.toggle('opacity-0')
   }
 
+  const removeMainLogo = () => {
+    mainLogo.classList.toggle('hidden')
+  }
+
   const toggleMobileLogo = () => {
     mobileLogo.classList.toggle('opacity-0')
+  }
+
+  const toggleScroll = () => {
+    document.body.classList.toggle('no-scroll')
   }
 
   return {

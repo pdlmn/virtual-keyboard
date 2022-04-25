@@ -6,6 +6,7 @@ const petsPageBurgerMenu = (() => {
     menu.modalWrapper.addEventListener('click', (e) => {
       if (menu.isVisible && e.target === menu.modalWrapper) {
         makeWrapperStatic()
+        togglePrimaryColorOnButton()
       }
     })
     menu.button.addEventListener('click', makeWrapperStatic)

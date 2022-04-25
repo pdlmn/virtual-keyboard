@@ -39,6 +39,7 @@ a {
 .modal-wrapper {
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 
   background-color: rgba(0, 0, 0, 0.4);
 
@@ -339,6 +340,7 @@ a {
       width: 30px;
       height: 38px;
       margin-right: 43px;
+      margin-left: auto;
 
       display: flex;
       flex-direction: column;
@@ -487,4 +489,9 @@ a {
 
 .on-screen {
   right: 0;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }
