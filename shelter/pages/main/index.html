@@ -12,26 +12,34 @@
     <script src="script.js" defer></script>
   </head>
 <body>
-  <div class="modal-wrapper">
-    <nav class="mobile-nav-menu">
-      <ul>
-        <li><a class="active-link" href="#">About the shelter</a></li>
-        <li><a class="link" href="../pets/index.html">Our pets</a></li>
-        <li><a class="link" href="#help">Help the shelter</a></li>
-        <li><a class="link" href="#footer">Contacts</a></li>
-      </ul>
-    </nav>
+  <div class="modal-wrapper opacity-0 transition-3ms">
+    <div class="mobile-menu out-of-screen transition-3ms">
+      <div class="z-99 mobile-logo opacity-0" data-mobile-logo>
+        <a href="#">
+          <h1 class="header-logo">Cozy House</h1>
+        </a>
+        <div class="header-sublogo">Shelter for pets in Boston</div>
+      </div>
+      <nav class="mobile-nav-menu">
+        <ul>
+          <li><a class="active-link" href="#">About the shelter</a></li>
+          <li><a class="link" href="../pets/index.html">Our pets</a></li>
+          <li><a class="link" href="#help">Help the shelter</a></li>
+          <li><a class="link" href="#footer">Contacts</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
   <div class="start-screen-wrapper">
     <div class="wrapper wrapper-header">
       <header class="header">
-        <div class="z-99 transition-2s">
+        <div class="transition-2s" data-main-logo>
           <a href="#">
             <h1 class="header-logo">Cozy House</h1>
           </a>
           <div class="header-sublogo">Shelter for pets in Boston</div>
         </div>
-        <div class="burger-menu transition-2s">
+        <div class="burger-menu transition-3ms">
           <div></div>
           <div></div>
           <div></div>
