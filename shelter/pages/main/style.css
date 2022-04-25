@@ -7,6 +7,8 @@ body {
 
 .start-screen-wrapper {
   padding: 4.7% 3% 0px;
+
+  position: relative;
 }
 
 .start-screen {

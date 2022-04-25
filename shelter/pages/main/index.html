@@ -9,18 +9,19 @@
     <link rel="stylesheet" href="../../assets/styles/normalize.css">
     <link rel="stylesheet" href="../../assets/styles/globals.css">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
   </head>
 <body>
   <div class="start-screen-wrapper">
     <div class="wrapper wrapper-header">
       <header class="header">
-        <div>
+        <div class="z-99 transition-2s">
           <a href="#">
             <h1 class="header-logo">Cozy House</h1>
           </a>
           <div class="header-sublogo">Shelter for pets in Boston</div>
         </div>
-        <div class="burger-menu">
+        <div class="burger-menu transition-2s">
           <div></div>
           <div></div>
           <div></div>
@@ -43,6 +44,14 @@
       </div>
       <img class="start-screen-puppy" src="../../assets/images/start-screen-puppy.png">
     </section>
+    <nav class="mobile-nav-menu">
+      <ul>
+        <li><a class="active-link" href="#">About the shelter</a></li>
+        <li><a class="link" href="../pets/index.html">Our pets</a></li>
+        <li><a class="link" href="#help">Help the shelter</a></li>
+        <li><a class="link" href="#footer">Contacts</a></li>
+      </ul>
+    </nav>
   </div>
   <main>
     <section class="about">
