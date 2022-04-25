@@ -92,10 +92,17 @@ body {
 
 .slider {
   width: 100%;
+  overflow: hidden;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.pet-cards {
+  position: relative;
+
+  gap: 70px;
 }
 
 .button-arrow {
@@ -261,7 +268,7 @@ body {
   background: var(--color-primary-light);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1220px) {
   .start-screen-wrapper {
     height: 1165px;
     padding: 4.2% 4% 0px;
@@ -338,7 +345,11 @@ body {
 
     display: flex;
     justify-content: space-evenly;
-    gap: 7%;
+    gap: 100px;
+  }
+
+  .pet-cards-group {
+    gap: 41px;
   }
 
   .card:last-child {
@@ -577,4 +588,37 @@ body {
     width: 87%;
     height: auto;
   }
+}
+
+/* Animations */
+@keyframes move-right {
+  from {right: 0px;}
+  to {right: 1151px;}
+}
+
+@keyframes move-left {
+  from {left: 0px;}
+  to {left: 1151px;}
+}
+
+@media (max-width: 1220px) {
+@keyframes move-right {
+  from {right: 0px;}
+  to {right: 681px;}
+}
+
+@keyframes move-left {
+  from {left: 0px;}
+  to {left: 681px;}
+}
+}
+
+.transition-left {
+  animation-name: move-left;
+  animation-duration: 3s;
+}
+
+.transition-right {
+  animation-name: move-right;
+  animation-duration: 3s;
 }

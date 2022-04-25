@@ -13,7 +13,7 @@ const burgerMenu = (() => {
         toggleMenu()
       }
     })
-    window.addEventListener('resize', (e) => {
+    window.addEventListener('resize', () => {
       if (window.innerWidth > 767 && isVisible) {
         toggleMenu()
       }

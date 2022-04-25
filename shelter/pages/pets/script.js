@@ -1,4 +1,4 @@
-const petsPageBurgerMenu = (() => {
+const petsPageMobileMenu = (() => {
   const menu = burgerMenu()
   const wrapper = document.querySelector('.wrapper-header')
 
@@ -36,5 +36,4 @@ const petsPageBurgerMenu = (() => {
     init
   }
 })()
-
-petsPageBurgerMenu.init()
+petsPageMobileMenu.init()

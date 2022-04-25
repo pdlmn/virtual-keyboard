@@ -222,7 +222,16 @@ a {
 }
 
 .pet-cards {
-  width: 90%;
+  width: 1080px;
+  
+  display: flex;
+  justify-content: center;
+}
+
+.pet-cards-group {
+  width: 100%;
+  padding: 0 45px;
+  gap: 90px;
 
   display: flex;
   justify-content: space-around;
@@ -292,7 +301,7 @@ a {
   cursor: pointer;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1220px) {
   .pets .wrapper {
     width: 708px;
   }
