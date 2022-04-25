@@ -7,8 +7,6 @@ body {
 
 .start-screen-wrapper {
   padding: 4.7% 3% 0px;
-
-  position: relative;
 }
 
 .start-screen {
@@ -397,7 +395,7 @@ body {
 @media (max-width: 767px) {
   .start-screen-wrapper {
     height: fit-content;
-    padding: 9.2% 2% 0px;
+    padding: 30.5px 3% 0px;
   }
 
   .start-screen.wrapper {
