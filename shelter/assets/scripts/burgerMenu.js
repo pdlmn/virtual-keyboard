@@ -22,6 +22,7 @@ const burgerMenu = (() => {
     toggleMobileLogo()
     toggleScroll()
     modalWrapper.classList.toggle('opacity-0')
+    modalWrapper.classList.toggle('invisible')
     menu.classList.toggle('on-screen')
     isVisible = !isVisible
   }
@@ -47,7 +48,7 @@ const burgerMenu = (() => {
   }
 
   return {
-    get isVisible() { return isVisible },
+    get isVisible () { return isVisible },
     modalWrapper,
     button,
     init

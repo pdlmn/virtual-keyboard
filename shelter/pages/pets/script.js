@@ -9,8 +9,10 @@ const petsPageBurgerMenu = (() => {
         togglePrimaryColorOnButton()
       }
     })
-    menu.button.addEventListener('click', makeWrapperStatic)
-    menu.button.addEventListener('click', togglePrimaryColorOnButton)
+    menu.button.addEventListener('click', () => {
+      makeWrapperStatic()
+      togglePrimaryColorOnButton()
+    })
     menu.modalWrapper.addEventListener('transitionend', makeWrapperSticky)
     menu.init()
   }

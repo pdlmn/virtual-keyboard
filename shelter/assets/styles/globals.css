@@ -463,6 +463,10 @@ a {
   display: none;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .opacity-0 {
   opacity: 0;
 }
