@@ -1,6 +1,3 @@
-const mobileMenu = burgerMenu()
-mobileMenu.init()
-
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
 
 const getPets = async () => {
@@ -8,6 +5,8 @@ const getPets = async () => {
   const petsData = await request.json()
   return petsData
 }
+
+const toggleNoScroll = () => document.body.classList.toggle('no-scroll-modal')
 
 const carousel = (() => {
   const petCards = document.querySelector('.pet-cards')
@@ -23,57 +22,38 @@ const carousel = (() => {
   let pets = []
   let activeIds = [0, 2, 4]
 
-  const getThreeIds = () => {
-    let newIds = []
-    while (newIds.length < 3) {
-      let randomId = getRandomInt(0, 7)
-      if (!activeIds.includes(randomId) && (!newIds.includes((randomId)))) {
-        newIds.push(randomId)
-      }
-    }
-    console.log(activeIds)
-    console.log()
-    return newIds
-  }
-
   const move = direction => () => {
     petCards.classList.add(`transition-${direction}`)
     currentDirection = direction
     previousItem = activeItem.innerHTML
     changedItem = document.querySelector(`[data-carousel="${direction}"]`).innerHTML
   }
-  const moveLeft = move('left')
-  const moveRight = move('right')
-
-  const oppositeOf = (direction) => direction === 'left' ? 'right' : 'left'
 
   const removeAnimationClasses = (e) => {
     e.currentTarget.classList.remove('transition-left', 'transition-right')
   }
 
-  const generateCarouselContent = () => {
-    activeItem.innerHTML = changedItem
-    if (currentDirection === 'left') {
-      rightItem.innerHTML = previousItem
-      leftItem.innerHTML = ''
-      leftItem.append(...generateCardGroup())
+  const getThreeIds = () => {
+    const newIds = []
+    while (newIds.length < 3) {
+      const randomId = getRandomInt(0, 7)
+      if (!activeIds.includes(randomId) && (!newIds.includes((randomId)))) {
+        newIds.push(randomId)
+      }
     }
-    if (currentDirection === 'right') {
-      leftItem.innerHTML = previousItem
-      rightItem.innerHTML = ''
-      rightItem.append(...generateCardGroup())
-    }
+    return newIds
   }
 
-  const generateCard = ({ name, img }) => {
+  const generateCard = ({ name, img, id }) => {
     const card = document.createElement('div')
     let template = ''
 
     card.classList.add('card')
+    card.dataset.id = id
     template += `<img src="${img}" class="card-image">`
     template += '<div class="card-body">'
     template += `<h3 class="card-name">${name}</h3>`
-    template += '<a href="#" class="btn-secondary">Learn more</a>'
+    template += '<button class="btn-secondary">Learn more</button>'
     template += '</div>'
 
     card.innerHTML = template
@@ -81,15 +61,36 @@ const carousel = (() => {
     return card
   }
 
-  const generateCardGroup = () => {
+  const addModalPopupToActiveCards = () => {
+    activeItem.querySelectorAll('.card[data-id]')
+      .forEach(card => card.addEventListener('click', (e) => {
+        modal.popup(pets[e.currentTarget.dataset.id])
+        toggleNoScroll()
+      }))
+  }
+
+  const makeCardGroup = (ids) => ids.map(id => generateCard(pets[id]))
+
+  const generateCarouselContent = () => {
+    activeItem.innerHTML = changedItem
+    activeIds = [...activeItem.querySelectorAll('.card[data-id]')]
+      .map(card => +card.dataset.id)
     const cardIds = getThreeIds()
-    activeIds = cardIds
-    return cardIds.map(id => generateCard(pets[id]))
+    if (currentDirection === 'left') {
+      rightItem.innerHTML = previousItem
+      leftItem.innerHTML = ''
+      leftItem.append(...makeCardGroup(cardIds))
+    }
+    if (currentDirection === 'right') {
+      leftItem.innerHTML = previousItem
+      rightItem.innerHTML = ''
+      rightItem.append(...makeCardGroup(cardIds))
+    }
   }
 
   const addEventListenersToButtons = () => {
-    leftButton.addEventListener('click', moveLeft, { once: true })
-    rightButton.addEventListener('click', moveRight, { once: true })
+    leftButton.addEventListener('click', move('left'), { once: true })
+    rightButton.addEventListener('click', move('right'), { once: true })
   }
 
   const init = async () => {
@@ -99,6 +100,7 @@ const carousel = (() => {
       removeAnimationClasses(e)
       generateCarouselContent()
       addEventListenersToButtons()
+      addModalPopupToActiveCards()
     })
   }
 
@@ -108,4 +110,84 @@ const carousel = (() => {
   }
 })()
 
+const modal = (() => {
+  const cards = document.querySelectorAll('[data-carousel="active"] .card')
+
+  const createModal = ({ 
+    name,
+    img,
+    type,
+    breed,
+    description,
+    age,
+    inoculations, 
+    diseases,
+    parasites 
+  }) => {
+    const wrapper = document.createElement('div')
+    const contentWrapper = document.createElement('div')
+    const closeButton = document.createElement('button')
+    const modal = document.createElement('div')
+    const image = document.createElement('img')
+    const cardContent = document.createElement('div')
+    const cardHeading = document.createElement('div')
+    const cardDescription = document.createElement('p')
+    const cardList = document.createElement('ul') 
+
+    wrapper.classList.add('modal-wrapper')
+    contentWrapper.classList.add('modal-content-wrapper')
+    modal.classList.add('modal')
+    cardContent.classList.add('modal-card-content')
+    closeButton.classList.add('button-round', 'modal-close')
+    cardDescription.classList.add('paragraph-l')
+
+    let cardHeadingTemplate = `<h3 class="heading3">${name}</h3>`
+    cardHeadingTemplate += `<h5 class="heading5">${type} - ${breed}</h5>`
+    let cardListTemplate = `<li><strong>Age</strong>: ${age}</li>`
+    cardListTemplate += `<li><strong>Inoculations</strong>: ${inoculations && 'none'}</li>`
+    cardListTemplate += `<li><strong>Diseases</strong>: ${diseases && 'none'}</li>`
+    cardListTemplate += `<li><strong>Parasites</strong>: ${parasites && 'none'}</li>`
+
+    image.src = img
+    cardDescription.innerText = description
+    cardHeading.innerHTML = cardHeadingTemplate
+    cardList.innerHTML = cardListTemplate
+
+    wrapper.append(contentWrapper)
+    contentWrapper.append(modal, closeButton)
+    closeButton.append('✕')
+    cardContent.append(cardHeading, cardDescription, cardList)
+    modal.append(image, cardContent)
+
+    wrapper.addEventListener('click', (e) => {
+      if (e.target === wrapper || e.target === closeButton || e.target === contentWrapper) {
+        wrapper.remove()
+        toggleNoScroll()
+      }
+    })
+    return wrapper
+  }
+
+  const popup = (pet) => {
+    const modal = createModal(pet)
+    document.body.append(modal)
+  }
+
+  const init = async () => {
+    const pets = await getPets()
+    cards.forEach(card => card.addEventListener('click', (e) => {
+      popup(pets[e.currentTarget.dataset.id])
+      toggleNoScroll()
+    }))
+  }
+
+  return {
+    init,
+    popup
+  }
+})()
+
+const mobileMenu = burgerMenu()
 carousel.init()
+mobileMenu.init()
+modal.init()
