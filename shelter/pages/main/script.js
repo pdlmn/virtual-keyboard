@@ -137,12 +137,14 @@ const modal = (() => {
     wrapper.classList.add('modal-wrapper')
     contentWrapper.classList.add('modal-content-wrapper')
     modal.classList.add('modal')
-    cardContent.classList.add('modal-card-content')
     closeButton.classList.add('button-round', 'modal-close')
-    cardDescription.classList.add('paragraph-l')
+    cardHeading.classList.add('modal-heading')
+    cardContent.classList.add('modal-card-content')
+    cardDescription.classList.add('paragraph-l', 'modal-description')
+    cardList.classList.add('modal-list')
 
     let cardHeadingTemplate = `<h3 class="heading3">${name}</h3>`
-    cardHeadingTemplate += `<h5 class="heading5">${type} - ${breed}</h5>`
+    cardHeadingTemplate += `<h5 class="heading5 modal-subheading">${type} - ${breed}</h5>`
     let cardListTemplate = `<li><strong>Age</strong>: ${age}</li>`
     cardListTemplate += `<li><strong>Inoculations</strong>: ${inoculations && 'none'}</li>`
     cardListTemplate += `<li><strong>Diseases</strong>: ${diseases && 'none'}</li>`
@@ -187,7 +189,6 @@ const modal = (() => {
   }
 })()
 
-const mobileMenu = burgerMenu()
 carousel.init()
-mobileMenu.init()
+burgerMenu().init()
 modal.init()
