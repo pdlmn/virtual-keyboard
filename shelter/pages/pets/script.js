@@ -1,6 +1,7 @@
 const petsPageMobileMenu = (() => {
   const menu = burgerMenu()
   const wrapper = document.querySelector('.wrapper-header')
+  const links = document.querySelectorAll('.mobile-nav-menu li')
 
   const init = () => {
     menu.modalWrapper.addEventListener('click', (e) => {
@@ -14,6 +15,9 @@ const petsPageMobileMenu = (() => {
       togglePrimaryColorOnButton()
     })
     menu.modalWrapper.addEventListener('transitionend', makeWrapperSticky)
+    links.forEach(link => link.addEventListener('click', () => {
+      togglePrimaryColorOnButton()
+    }))
     menu.init()
   }
 
