@@ -101,7 +101,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1220px) {
   .wrapper-header .wrapper {
     max-width: 708px;
   }
@@ -127,7 +127,7 @@
     display: none;
   }
 
-  @media (max-width: 744px) {
+  @media (max-width: 767px) {
     .header {
       padding: 0 .4%;
     }
@@ -168,3 +168,13 @@
     }
   }
 }
+
+/* Utility classes for pets page */
+.static {
+  position: static;
+}
+
+.primary {
+  background-color: var(--color-primary);
+}
+
