@@ -105,7 +105,7 @@ body {
   gap: 70px;
 }
 
-.button-arrow {
+.button-round {
   width: 52px;
   height: 52px;
   border: 2px solid var(--color-primary);
@@ -122,7 +122,7 @@ body {
   cursor: pointer;
 }
 
-.button-arrow:hover {
+.button-round:hover {
   background-color: var(--color-primary);
 }
 

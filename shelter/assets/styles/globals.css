@@ -44,6 +44,33 @@ a {
   background-color: rgba(0, 0, 0, 0.4);
 
   position: absolute;
+  top: 0;
+}
+
+.modal-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 52px;
+  grid-template-rows: 52px 1fr;
+
+  position: fixed;
+  left: 32vw;
+  top: 15vh;
+}
+
+.modal {
+  width: 500px;
+  height: 300px;
+  border-radius: 8px;
+
+  background-color: var(--color-light-s);
+
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.modal-content-wrapper .modal-close {
+  grid-column: 2 / 3;
+  background-color: transparent;
 }
 
 .mobile-menu .header-logo {
@@ -284,15 +311,16 @@ a {
 }
 
 .btn-secondary {
-  font-family: 'Georgia';
-  font-size: 16px;
-  letter-spacing: 1.5px;
-  color: var(--color-dark-3xl);
-
   width: 187px;
   height: 52px;
   border: 2px solid #F1CDB3;
   border-radius: 100px;
+
+  font-family: 'Georgia';
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  color: var(--color-dark-3xl);
+  background: var(--color-light-s);
 
   display: flex;
   justify-content: center;
@@ -507,4 +535,8 @@ a {
 .no-scroll {
   overflow: hidden;
   height: 100vh;
+}
+
+.no-scroll-modal {
+  overflow: hidden;
 }
