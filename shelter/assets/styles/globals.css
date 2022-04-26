@@ -316,7 +316,8 @@ a {
 .modal {
   width: 900px;
   height: 500px;
-  border-radius: 8px;
+  overflow: scroll;
+  border-radius: 10px;
 
   background-color: var(--color-light-s);
   color: black;
@@ -562,6 +563,44 @@ a {
       width: 45%;
 
       align-self: center;
+    }
+
+    .modal-content-wrapper {
+      left: 15.2vw;
+    }
+
+    .modal {
+      width: 240px;
+      height: 341px;
+    }
+
+    .modal-card-content {
+      margin: 11px 10px 10px 10px;
+    }
+
+    .modal-heading {
+      text-align: center;
+      margin: 1px;
+    }
+
+    .modal-heading .heading3 {
+      font-size: 35px;
+    }
+
+    .modal-description {
+      margin-top: 22px;
+      line-height: 107%;
+    }
+
+    .modal-list {
+      margin: 23px 0 0 0;
+      padding-bottom: 10px;
+
+      gap: 5px;
+    }
+
+    .modal-image {
+      display: none;
     }
   }
 }
