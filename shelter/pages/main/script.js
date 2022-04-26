@@ -146,9 +146,9 @@ const modal = (() => {
     let cardHeadingTemplate = `<h3 class="heading3">${name}</h3>`
     cardHeadingTemplate += `<h5 class="heading5 modal-subheading">${type} - ${breed}</h5>`
     let cardListTemplate = `<li><strong>Age</strong>: ${age}</li>`
-    cardListTemplate += `<li><strong>Inoculations</strong>: ${inoculations && 'none'}</li>`
-    cardListTemplate += `<li><strong>Diseases</strong>: ${diseases && 'none'}</li>`
-    cardListTemplate += `<li><strong>Parasites</strong>: ${parasites && 'none'}</li>`
+    cardListTemplate += `<li><strong>Inoculations</strong>: ${inoculations.join(', ')}</li>`
+    cardListTemplate += `<li><strong>Diseases</strong>: ${diseases.join(', ')}</li>`
+    cardListTemplate += `<li><strong>Parasites</strong>: ${parasites.join(', ')}</li>`
 
     image.src = img
     cardDescription.innerText = description
