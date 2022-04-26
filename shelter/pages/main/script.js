@@ -6,6 +6,8 @@ const getPets = async () => {
   return petsData
 }
 
+const toggleNoScroll = () => document.body.classList.toggle('no-scroll-modal')
+
 const carousel = (() => {
   const petCards = document.querySelector('.pet-cards')
   const leftButton = document.querySelector('.button-arrow-back')
@@ -59,6 +61,14 @@ const carousel = (() => {
     return card
   }
 
+  const addModalPopupToActiveCards = () => {
+    activeItem.querySelectorAll('.card[data-id]')
+      .forEach(card => card.addEventListener('click', (e) => {
+        modal.popup(pets[e.currentTarget.dataset.id])
+        toggleNoScroll()
+      }))
+  }
+
   const makeCardGroup = (ids) => ids.map(id => generateCard(pets[id]))
 
   const generateCarouselContent = () => {
@@ -90,6 +100,7 @@ const carousel = (() => {
       removeAnimationClasses(e)
       generateCarouselContent()
       addEventListenersToButtons()
+      addModalPopupToActiveCards()
     })
   }
 
@@ -100,7 +111,7 @@ const carousel = (() => {
 })()
 
 const modal = (() => {
-  const cards = document.querySelectorAll('.card')
+  const cards = document.querySelectorAll('[data-carousel="active"] .card')
 
   const createModal = ({ 
     name,
@@ -162,12 +173,9 @@ const modal = (() => {
     document.body.append(modal)
   }
 
-  const toggleNoScroll = () => document.body.classList.toggle('no-scroll-modal')
-
   const init = async () => {
     const pets = await getPets()
     cards.forEach(card => card.addEventListener('click', (e) => {
-      console.log(pets[e.currentTarget.dataset.id])
       popup(pets[e.currentTarget.dataset.id])
       toggleNoScroll()
     }))
