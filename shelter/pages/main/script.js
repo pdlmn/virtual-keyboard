@@ -142,6 +142,7 @@ const modal = (() => {
     cardContent.classList.add('modal-card-content')
     cardDescription.classList.add('paragraph-l', 'modal-description')
     cardList.classList.add('modal-list')
+    image.classList.add('modal-image')
 
     let cardHeadingTemplate = `<h3 class="heading3">${name}</h3>`
     cardHeadingTemplate += `<h5 class="heading5 modal-subheading">${type} - ${breed}</h5>`

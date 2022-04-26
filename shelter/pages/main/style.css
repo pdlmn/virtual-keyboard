@@ -627,10 +627,10 @@ body {
 
 .transition-left {
   animation-name: move-left;
-  animation-duration: 3s;
+  animation-duration: 1s;
 }
 
 .transition-right {
   animation-name: move-right;
-  animation-duration: 3s;
+  animation-duration: 1s;
 }

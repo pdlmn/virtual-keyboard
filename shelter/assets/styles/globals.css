@@ -391,6 +391,41 @@ a {
     align-self: flex-end;
   }
 
+  .modal-content-wrapper {
+    left: 9vw;
+    top: 1vh;
+  }
+
+  .modal {
+    width: 630px;
+    height: 350px;
+    overflow: hidden;
+  }
+
+  .modal-card-content {
+    margin: 11px 11px 37px 11px;
+  }
+
+  .modal-heading {
+    margin-bottom: 20px;
+  }
+
+  .modal-description {
+    font-size: 13px;
+    line-height: 110%;
+    letter-spacing: 0.055em;
+  }
+
+  .modal-list {
+    margin-top: 18px;
+    gap: 5px;
+  }
+
+  .modal-image {
+    height: 350px;
+    width: 350px;
+  }
+
   @media (max-width: 767px) {
     .heading3 {
       font-size: 25px;
