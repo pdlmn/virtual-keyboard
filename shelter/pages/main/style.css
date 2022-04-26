@@ -406,7 +406,7 @@ body {
 @media (max-width: 767px) {
   .start-screen-wrapper {
     height: fit-content;
-    padding: 30.5px 3% 0px;
+    padding: 28.5px 2% 0px;
   }
 
   .start-screen.wrapper {
@@ -602,15 +602,27 @@ body {
 }
 
 @media (max-width: 1220px) {
-@keyframes move-right {
-  from {right: 0px;}
-  to {right: 681px;}
+  @keyframes move-right {
+    from {right: 0px;}
+    to {right: 681px;}
+  }
+
+  @keyframes move-left {
+    from {left: 0px;}
+    to {left: 681px;}
+  }
 }
 
-@keyframes move-left {
-  from {left: 0px;}
-  to {left: 681px;}
-}
+@media (max-width: 767px) {
+  @keyframes move-right {
+    from {right: 0px;}
+    to {right: 420px;}
+  }
+
+  @keyframes move-left {
+    from {left: 0px;}
+    to {left: 420px;}
+  }
 }
 
 .transition-left {

@@ -11,32 +11,34 @@ const getPets = async () => {
 
 const carousel = (() => {
   const petCards = document.querySelector('.pet-cards')
-  const backButton = document.querySelector('.button-arrow-back')
-  const forwardButton = document.querySelector('.button-arrow-forward')
+  const leftButton = document.querySelector('.button-arrow-back')
+  const rightButton = document.querySelector('.button-arrow-forward')
   const activeItem = document.querySelector('[data-carousel="active"]')
   const leftItem = document.querySelector('[data-carousel="left"]')
   const rightItem = document.querySelector('[data-carousel="right"]')
 
   let changedItem = ''
   let previousItem = ''
-  let lastDirection = ''
+  let currentDirection = ''
   let pets = []
-  let activeCards = [0, 2, 4]
+  let activeIds = [0, 2, 4]
 
   const getThreeIds = () => {
     let newIds = []
     while (newIds.length < 3) {
       let randomId = getRandomInt(0, 7)
-      if (!activeItem.contains(randomId)) {
-        newCards.push(randomId)
+      if (!activeIds.includes(randomId) && (!newIds.includes((randomId)))) {
+        newIds.push(randomId)
       }
     }
+    console.log(activeIds)
+    console.log()
     return newIds
   }
 
   const move = direction => () => {
     petCards.classList.add(`transition-${direction}`)
-    lastDirection = direction
+    currentDirection = direction
     previousItem = activeItem.innerHTML
     changedItem = document.querySelector(`[data-carousel="${direction}"]`).innerHTML
   }
@@ -47,15 +49,19 @@ const carousel = (() => {
 
   const removeAnimationClasses = (e) => {
     e.currentTarget.classList.remove('transition-left', 'transition-right')
-    activeItem.innerHTML = changedItem
-    if (lastDirection === 'left') {
-      rightItem.innerHTML = previousItem
-    }
-    if (lastDirection === 'right') {
-      leftItem.innerHTML = previousItem
-    }
-    else {
+  }
 
+  const generateCarouselContent = () => {
+    activeItem.innerHTML = changedItem
+    if (currentDirection === 'left') {
+      rightItem.innerHTML = previousItem
+      leftItem.innerHTML = ''
+      leftItem.append(...generateCardGroup())
+    }
+    if (currentDirection === 'right') {
+      leftItem.innerHTML = previousItem
+      rightItem.innerHTML = ''
+      rightItem.append(...generateCardGroup())
     }
   }
 
@@ -75,13 +81,24 @@ const carousel = (() => {
     return card
   }
 
+  const generateCardGroup = () => {
+    const cardIds = getThreeIds()
+    activeIds = cardIds
+    return cardIds.map(id => generateCard(pets[id]))
+  }
+
+  const addEventListenersToButtons = () => {
+    leftButton.addEventListener('click', moveLeft, { once: true })
+    rightButton.addEventListener('click', moveRight, { once: true })
+  }
+
   const init = async () => {
     pets = await getPets()
-    console.log(pets)
-    backButton.addEventListener('click', moveLeft)
-    forwardButton.addEventListener('click', moveRight)
+    addEventListenersToButtons()
     petCards.addEventListener('animationend', (e) => {
       removeAnimationClasses(e)
+      generateCarouselContent()
+      addEventListenersToButtons()
     })
   }
 
