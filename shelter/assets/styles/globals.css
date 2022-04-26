@@ -316,7 +316,6 @@ a {
 .modal {
   width: 900px;
   height: 500px;
-  overflow: scroll;
   border-radius: 10px;
 
   background-color: var(--color-light-s);
@@ -405,6 +404,7 @@ a {
 
   .modal-card-content {
     margin: 11px 11px 37px 11px;
+    overflow: scroll;
   }
 
   .modal-heading {
