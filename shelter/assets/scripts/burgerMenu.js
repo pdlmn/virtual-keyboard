@@ -4,6 +4,7 @@ const burgerMenu = (() => {
   const button = document.querySelector('.burger-menu')
   const menu = document.querySelector('.mobile-menu')
   const modalWrapper = document.querySelector('.modal-wrapper')
+  const links = document.querySelectorAll('.mobile-nav-menu li')
   let isVisible = false
 
   const init = () => {
@@ -18,6 +19,9 @@ const burgerMenu = (() => {
         toggleMenu()
       }
     })
+    links.forEach(link => link.addEventListener('click', () => {
+      toggleMenu()
+    }))
   }
 
   const toggleMenu = () => {
