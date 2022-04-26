@@ -53,24 +53,33 @@ a {
   grid-template-rows: 52px 1fr;
 
   position: fixed;
-  left: 32vw;
-  top: 15vh;
+  left: 17.1vw;
+  top: 5vh;
 }
 
 .modal {
-  width: 500px;
-  height: 300px;
+  width: 900px;
+  height: 500px;
   border-radius: 8px;
 
   background-color: var(--color-light-s);
+  color: black;
 
+  display: flex;
   grid-column: 1 / 2;
   grid-row: 2 / 3;
 }
 
 .modal-content-wrapper .modal-close {
+  font-size: 20px;
+
   grid-column: 2 / 3;
   background-color: transparent;
+}
+
+.modal-card-content {
+  width: 351px;
+  margin: 50px 20px 88px 30px;
 }
 
 .mobile-menu .header-logo {

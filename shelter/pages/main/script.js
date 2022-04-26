@@ -102,45 +102,73 @@ const carousel = (() => {
 const modal = (() => {
   const cards = document.querySelectorAll('.card')
 
-  const createModal = () => {
+  const createModal = ({ 
+    name,
+    img,
+    type,
+    breed,
+    description,
+    age,
+    inoculations, 
+    diseases,
+    parasites 
+  }) => {
     const wrapper = document.createElement('div')
     const contentWrapper = document.createElement('div')
-    const modal = document.createElement('div')
     const closeButton = document.createElement('button')
+    const modal = document.createElement('div')
+    const image = document.createElement('img')
+    const cardContent = document.createElement('div')
+    const cardHeading = document.createElement('div')
+    const cardDescription = document.createElement('p')
+    const cardList = document.createElement('ul') 
 
     wrapper.classList.add('modal-wrapper')
     contentWrapper.classList.add('modal-content-wrapper')
     modal.classList.add('modal')
+    cardContent.classList.add('modal-card-content')
     closeButton.classList.add('button-round', 'modal-close')
+    cardDescription.classList.add('paragraph-l')
+
+    let cardHeadingTemplate = `<h3 class="heading3">${name}</h3>`
+    cardHeadingTemplate += `<h5 class="heading5">${type} - ${breed}</h5>`
+    let cardListTemplate = `<li><strong>Age</strong>: ${age}</li>`
+    cardListTemplate += `<li><strong>Inoculations</strong>: ${inoculations && 'none'}</li>`
+    cardListTemplate += `<li><strong>Diseases</strong>: ${diseases && 'none'}</li>`
+    cardListTemplate += `<li><strong>Parasites</strong>: ${parasites && 'none'}</li>`
+
+    image.src = img
+    cardDescription.innerText = description
+    cardHeading.innerHTML = cardHeadingTemplate
+    cardList.innerHTML = cardListTemplate
 
     wrapper.append(contentWrapper)
     contentWrapper.append(modal, closeButton)
     closeButton.append('✕')
+    cardContent.append(cardHeading, cardDescription, cardList)
+    modal.append(image, cardContent)
 
     wrapper.addEventListener('click', (e) => {
-      if (e.target === wrapper) {
+      if (e.target === wrapper || e.target === closeButton || e.target === contentWrapper) {
         wrapper.remove()
         toggleNoScroll()
       }
     })
-    closeButton.addEventListener('click', () => {
-      wrapper.remove()
-      toggleNoScroll()
-    })
     return wrapper
   }
 
-  const popup = () => {
-    const modal = createModal()
-    // modal.append(generateModalContent())
+  const popup = (pet) => {
+    const modal = createModal(pet)
     document.body.append(modal)
   }
 
   const toggleNoScroll = () => document.body.classList.toggle('no-scroll-modal')
 
-  const init = () => {
-    cards.forEach(card => card.addEventListener('click', () => {
-      popup()
+  const init = async () => {
+    const pets = await getPets()
+    cards.forEach(card => card.addEventListener('click', (e) => {
+      console.log(pets[e.currentTarget.dataset.id])
+      popup(pets[e.currentTarget.dataset.id])
       toggleNoScroll()
     }))
   }
