@@ -112,7 +112,10 @@ const pagination = (() => {
       i++
     }
     petCards.innerHTML = ''
-    console.log(cards)
+    cards.forEach(card => card.addEventListener('click', (e) => {
+      modal.popup(arrOfPets[e.currentTarget.dataset.id])
+      toggleNoScroll()
+    }))
     petCards.append(...cards)
   }
 

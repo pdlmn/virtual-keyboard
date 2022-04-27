@@ -380,7 +380,7 @@ a {
 }
 
 .modal-list {
-  padding-left: 15px;
+  padding-left: 17px;
   margin-top: 35px;
 
   font-family: 'Georgia';
@@ -389,6 +389,10 @@ a {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.modal-list li::marker {
+  color: var(--color-primary);
 }
 
 @media (max-width: 1279px) {
