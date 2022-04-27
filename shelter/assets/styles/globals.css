@@ -313,7 +313,8 @@ a {
   grid-template-rows: 52px 1fr;
 
   position: fixed;
-  left: 17.1vw;
+  left: 50%;
+  transform: translate(-50%, 0);
   top: 5vh;
 }
 
@@ -393,11 +394,6 @@ a {
     margin: 46px auto 0 auto;
 
     align-self: flex-end;
-  }
-
-  .modal-content-wrapper {
-    left: 9vw;
-    top: 1vh;
   }
 
   .modal {
@@ -567,10 +563,6 @@ a {
       width: 45%;
 
       align-self: center;
-    }
-
-    .modal-content-wrapper {
-      left: 15.2vw;
     }
 
     .modal {
