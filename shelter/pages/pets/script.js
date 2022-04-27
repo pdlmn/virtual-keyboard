@@ -42,6 +42,7 @@ const petsPageMobileMenu = (() => {
 })()
 
 const pagination = (() => {
+  const petCards = document.querySelector('.pet-cards')
   const start = document.querySelector('[data-paginator="start"]')
   const prev = document.querySelector('[data-paginator="prev"]')
   const current = document.querySelector('[data-paginator="current"]')
@@ -49,14 +50,22 @@ const pagination = (() => {
   const end = document.querySelector('[data-paginator="end"]')
 
   let maxPages = 0
+  let cardNum = 0
   let currentPage = 1
   const setMaxPages = () => {
-    if (window.innerWidth <= 767) maxPages = 10
-    else if (window.innerWidth <= 1279) maxPages = 8
-    else maxPages = 6
+    if (window.innerWidth <= 767) {
+      maxPages = 16
+      cardNum = 3
+    } else if (window.innerWidth <= 1279) {
+      maxPages = 8
+      cardNum = 6
+    } else {
+      maxPages = 6
+      cardNum = 8
+    }
   }
 
-  const toPage = direction => () => {
+  const toPage = direction => {
     if (direction === 'next') currentPage += 1
     if (direction === 'prev') currentPage -= 1
     if (direction === 'start') currentPage = 1
@@ -79,8 +88,8 @@ const pagination = (() => {
   }
 
   const shuffle = (arr) => arr.map(elem => ({ elem, sort: Math.random() }))
-      .sort((a,b) => a.sort - b.sort)
-      .map(({ elem }) => elem)
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ elem }) => elem)
 
   const createArrayOfPetIds = () => {
     const arr = []
@@ -90,15 +99,39 @@ const pagination = (() => {
     return arr.reduce((acc, cur) => acc.concat(cur), [])
   }
 
-  const init = () => {
+  const fillPetCards = (arrOfPets, randomIds, numberOfCards, page) => {
+    const cards = []
+    let i = 0
+    if (page > 1) {
+      i = numberOfCards * (page - 1)
+      numberOfCards = numberOfCards * page
+    }
+    while (i < numberOfCards) {
+      const randomId = randomIds[i]
+      cards.push(generateCard(arrOfPets[randomId]))
+      i++
+    }
+    petCards.innerHTML = ''
+    console.log(cards)
+    petCards.append(...cards)
+  }
+
+  const init = async () => {
+    const pets = await getPets()
+    const arrOfIds = createArrayOfPetIds()
     setMaxPages()
+    fillPetCards(pets, arrOfIds, cardNum, currentPage)
     window.addEventListener('resize', () => {
       setMaxPages()
     })
-    next.addEventListener('click', toPage('next'))
-    prev.addEventListener('click', toPage('prev'))
-    start.addEventListener('click', toPage('start'))
-    end.addEventListener('click', toPage('end'))
+    const hanglePageChange = (e) => {
+      toPage(e.currentTarget.dataset.paginator)
+      fillPetCards(pets, arrOfIds, cardNum, currentPage)
+    }
+    next.addEventListener('click', hanglePageChange)
+    prev.addEventListener('click', hanglePageChange)
+    start.addEventListener('click', hanglePageChange)
+    end.addEventListener('click', hanglePageChange)
   }
 
   return {
