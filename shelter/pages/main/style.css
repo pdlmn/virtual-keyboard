@@ -580,7 +580,7 @@ body {
   to {left: 1151px;}
 }
 
-@media (max-width: 1220px) {
+@media (max-width: 1279px) {
   @keyframes move-right {
     from {right: 0px;}
     to {right: 681px;}

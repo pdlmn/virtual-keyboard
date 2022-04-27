@@ -391,7 +391,7 @@ a {
   gap: 10px;
 }
 
-@media (max-width: 1220px) {
+@media (max-width: 1279px) {
   .pets .wrapper {
     width: 708px;
   }
