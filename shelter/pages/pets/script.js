@@ -40,4 +40,6 @@ const petsPageMobileMenu = (() => {
     init
   }
 })()
+
 petsPageMobileMenu.init()
+modal.init()
