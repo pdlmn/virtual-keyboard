@@ -105,27 +105,6 @@ body {
   gap: 70px;
 }
 
-.button-round {
-  width: 52px;
-  height: 52px;
-  border: 2px solid var(--color-primary);
-  border-radius: 50%;
-  margin: 0;
-  padding: 0;
-
-  background: var(--color-light-l);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  cursor: pointer;
-}
-
-.button-round:hover {
-  background-color: var(--color-primary);
-}
-
 .pets-btn {
   width: 260px;
 }
