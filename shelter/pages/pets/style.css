@@ -148,10 +148,6 @@
       grid-template: 1fr 1fr 1fr / 1fr;
     }
 
-    .card:nth-last-child(-n+5) {
-      display: none;
-    }
-
     .pets-navigation {
       width: 94%;
       max-width: 350px;

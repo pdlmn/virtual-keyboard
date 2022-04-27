@@ -65,11 +65,7 @@ const pagination = (() => {
     }
   }
 
-  const toPage = direction => {
-    if (direction === 'next') currentPage += 1
-    if (direction === 'prev') currentPage -= 1
-    if (direction === 'start') currentPage = 1
-    if (direction === 'end') currentPage = maxPages
+  const managePaginationButtonsState = () => {
     if (currentPage === maxPages) {
       next.disabled = true
       end.disabled = true
@@ -84,6 +80,14 @@ const pagination = (() => {
       prev.disabled = false
       start.disabled = false
     }
+  }
+
+  const toPage = direction => {
+    if (direction === 'next') currentPage += 1
+    if (direction === 'prev') currentPage -= 1
+    if (direction === 'start') currentPage = 1
+    if (direction === 'end') currentPage = maxPages
+    managePaginationButtonsState()
     current.innerText = currentPage
   }
 
@@ -126,6 +130,12 @@ const pagination = (() => {
     fillPetCards(pets, arrOfIds, cardNum, currentPage)
     window.addEventListener('resize', () => {
       setMaxPages()
+      if (currentPage > maxPages) {
+        currentPage = maxPages
+        current.innerText = maxPages
+      }
+      managePaginationButtonsState()
+      fillPetCards(pets, arrOfIds, cardNum, currentPage)
     })
     const hanglePageChange = (e) => {
       toPage(e.currentTarget.dataset.paginator)
