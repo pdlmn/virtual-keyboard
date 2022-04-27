@@ -61,6 +61,14 @@ const carousel = (() => {
     }
   }
 
+  const generateLeftAndRightCards = () => {
+    rightItem.innerHTML = ''
+    leftItem.innerHTML = ''
+
+    rightItem.append(...makeCardGroup(getThreeIds()))
+    leftItem.append(...makeCardGroup(getThreeIds()))
+  }
+
   const addEventListenersToButtons = () => {
     leftButton.addEventListener('click', move('left'), { once: true })
     rightButton.addEventListener('click', move('right'), { once: true })
@@ -68,6 +76,7 @@ const carousel = (() => {
 
   const init = async () => {
     pets = await getPets()
+    generateLeftAndRightCards()
     addEventListenersToButtons()
     petCards.addEventListener('animationend', (e) => {
       removeAnimationClasses(e)
