@@ -380,7 +380,7 @@ a {
 }
 
 .modal-list {
-  padding-left: 15px;
+  padding-left: 17px;
   margin-top: 35px;
 
   font-family: 'Georgia';
@@ -391,7 +391,11 @@ a {
   gap: 10px;
 }
 
-@media (max-width: 1220px) {
+.modal-list li::marker {
+  color: var(--color-primary);
+}
+
+@media (max-width: 1279px) {
   .pets .wrapper {
     width: 708px;
   }
