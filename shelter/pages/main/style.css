@@ -482,6 +482,7 @@ body {
     margin-bottom: 22px;
 
     justify-content: center;
+    gap: 160px;
   }
 
   .card:nth-child(2) {
@@ -595,12 +596,12 @@ body {
 @media (max-width: 767px) {
   @keyframes move-right {
     from {right: 0px;}
-    to {right: 420px;}
+    to {right: 520px;}
   }
 
   @keyframes move-left {
     from {left: 0px;}
-    to {left: 420px;}
+    to {left: 520px;}
   }
 }
 
