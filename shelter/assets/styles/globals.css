@@ -314,8 +314,13 @@ a {
   cursor: pointer;
 }
 
+.modal-wrapper:hover .modal-close,
 .button-round:hover {
   background-color: var(--color-primary) !important;
+}
+
+.modal:hover + .modal-close {
+  background-color: initial !important;
 }
 
 .modal-wrapper {
@@ -339,6 +344,7 @@ a {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
 
 .modal {
   width: 900px;
