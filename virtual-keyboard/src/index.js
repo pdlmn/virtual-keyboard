@@ -1,3 +1,3 @@
-import './sass/main.scss'
+import './sass/main.scss';
 
-console.log();
+console.log('lmao');
