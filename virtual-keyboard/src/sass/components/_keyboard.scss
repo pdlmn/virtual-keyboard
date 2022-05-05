@@ -1,0 +1,39 @@
+.keyboard {
+  width: 1025px;
+  padding: 10px;
+  border-radius: 12px;
+
+  background-color: $keyboard-color;
+  
+  @include flex-gap(0.5em);
+  flex-direction: column;
+}
+
+.keyboard__row {
+  display: flex;
+  gap: 0.5em;
+}
+
+.keyboard__key {
+  min-width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 4px;
+
+  background-color: $key-color;
+
+  font-size: 22px;
+  color: $key-font-color;
+
+  cursor: pointer;
+
+  @include flex-center;
+
+  &--grow-1 {
+    flex-grow: 1;
+  }
+
+  &:hover {
+    background-color: mix($key-color, white, $weight: 90%);
+  }
+}
