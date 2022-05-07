@@ -11,11 +11,15 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    watchFiles: [path.resolve(__dirname, 'virtual-keyboard/src/template.html')],
+    watchFiles: [
+      path.resolve(__dirname, 'virtual-keyboard/src/**/*.js'),
+      path.resolve(__dirname, 'virtual-keyboard/src/template.html'),
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Virtual Keyboard',
+      template: path.resolve(__dirname, 'virtual-keyboard/src/template.html')
     }),
   ],
   module: {
