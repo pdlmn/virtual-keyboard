@@ -28,7 +28,10 @@
   cursor: pointer;
   user-select: none;
 
+  transition: 0.1s;
+
   @include flex-center;
+
 
   &--grow-1 {
     flex-grow: 1;
@@ -36,6 +39,11 @@
 
   &--dark {
     background-color: mix($key-color, rgb(0, 0, 10), $weight: 70%);
+  }
+
+  &--pressed {
+    transform: scale(0.9);
+    background-color: mix($key-color, white, $weight: 95%);
   }
 
   &:hover {

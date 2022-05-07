@@ -1,12 +1,24 @@
 import codes from './codes';
 
 const Keyboard = () => {
-  const isSpecial = (obj) => Boolean(obj.name)
-  const isDigit = (obj) => {}
+  const addKeyAnimation = (e) => {
+    // console.log(e)
+    e.preventDefault()
+    document.querySelector(`[data-code="${e.code}"]`)
+      .classList.add('keyboard__key--pressed')
+  }
+
+  const removeKeyAnimation = (e) => {
+    e.target
+      .classList.remove('keyboard__key--pressed')
+  }
 
   const create = () => {
     const wrapper = document.createElement('div');
     const keyboard = document.createElement('div');
+
+    window.addEventListener('keyup', addKeyAnimation)
+    keyboard.addEventListener('transitionend', removeKeyAnimation)
 
     wrapper.classList.add('wrapper');
     keyboard.classList.add('keyboard');
@@ -41,10 +53,10 @@ const Keyboard = () => {
     return wrapper;
   };
 
-  window.addEventListener('keydown', (e) => {
-    // console.log(`key: ${e.key}`)
-    console.log(`code: ${e.code}`);
-  });
+  // window.addEventListener('keydown', (e) => {
+  //   // console.log(`key: ${e.key}`)
+  //   console.log(`code: ${e.code}`);
+  // });
 
   return {
     create,
