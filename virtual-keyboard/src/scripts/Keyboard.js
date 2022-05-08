@@ -2,25 +2,45 @@ import codes from './codes';
 
 const Keyboard = () => {
   const isShiftOn = false;
-  const isCapsOn = false;
+  let isCapsOn = false;
+  const currentLanguage = 'en';
 
-  const addKeyAnimation = (e) => {
+  const handleKeyDown = (e) => {
     e.preventDefault();
     const key = document.querySelector(`[data-code="${e.code}"]`);
     key.classList.add('keyboard__key--pressed');
+
+    if (key.dataset.code === 'CapsLock') {
+      key.classList.toggle('keyboard__key--toggled-on');
+      isCapsOn = !isCapsOn;
+    }
   };
 
-  const removeKeyAnimation = (e) => {
-    const key = document.querySelector(`[data-code="${e.code}"]`)
+  const handleKeyUp = (e) => {
+    const key = document.querySelector(`[data-code="${e.code}"]`);
     key.classList.remove('keyboard__key--pressed');
   };
+
+  const handleKeyClick = (e) => {
+    if (e.target.classList.contains('keyboard__key')) {
+      e.target.classList.add('keyboard__key--pressed');
+    }
+    if (e.target.dataset.code === 'CapsLock') {
+      e.target.classList.toggle('keyboard__key--toggled-on');
+      isCapsOn = !isCapsOn;
+    }
+  };
+
+  const handleTransitionEnd = (e) => {
+    e.target.classList.remove('keyboard__key--pressed');
+  };
+
+  window.addEventListener('keydown', handleKeyDown);
+  window.addEventListener('keyup', handleKeyUp);
 
   const create = () => {
     const wrapper = document.createElement('div');
     const keyboard = document.createElement('div');
-
-    window.addEventListener('keydown', addKeyAnimation);
-    window.addEventListener('keyup', removeKeyAnimation);
 
     wrapper.classList.add('wrapper');
     keyboard.classList.add('keyboard');
@@ -44,6 +64,10 @@ const Keyboard = () => {
           [keyEl.textContent] = key.en;
         }
 
+        if (key.code === 'CapsLock') {
+          keyEl.classList.add('keyboard__key--toggled');
+        }
+
         if (['Backspace', 'Tab', 'Enter', 'ShiftLeft', 'Space'].includes(key.code)) {
           keyEl.classList.add('keyboard__key--grow-1');
         }
@@ -51,6 +75,9 @@ const Keyboard = () => {
         rowEl.append(keyEl);
       });
     });
+
+    keyboard.addEventListener('click', handleKeyClick);
+    keyboard.addEventListener('transitionend', handleTransitionEnd);
 
     return wrapper;
   };
