@@ -3,10 +3,11 @@ import codes from './codes';
 const Keyboard = () => {
   let isShiftOn = false;
   let isCapsOn = false;
+  let isAltOn = false;
   let lastEvent = '';
-  const currentLanguage = 'en';
+  let currentLanguage = 'en';
 
-  const changeCapitalizationKeyLetters = () => {
+  const toggleLetterCapitalization = () => {
     codes.forEach((row) => {
       row.forEach((key) => {
         // in both languages if array of symbols for key is equal to one
@@ -21,7 +22,7 @@ const Keyboard = () => {
     });
   };
 
-  const changeToAlternateSymbol = () => {
+  const toggleKeySymbols = () => {
     codes.forEach((row) => {
       row.forEach((key) => {
         // if one key has more than one symbol
@@ -35,15 +36,21 @@ const Keyboard = () => {
     });
   };
 
+  const toggleLanguage = () => {
+    currentLanguage = currentLanguage === 'en'
+      ? 'ru'
+      : 'en'
+  }
+
   const toggleCaps = () => {
     isCapsOn = !isCapsOn;
-    changeCapitalizationKeyLetters();
+    toggleLetterCapitalization();
   }
 
   const toggleShift = () => {
     isShiftOn = !isShiftOn;
-    changeCapitalizationKeyLetters()
-    changeToAlternateSymbol()
+    toggleLetterCapitalization()
+    toggleKeySymbols()
   }
 
   const handleKeyDown = (e) => {
@@ -56,6 +63,10 @@ const Keyboard = () => {
       key.classList.toggle('keyboard__key--toggled-on');
       toggleCaps()
     }
+    if (['AltLeft', 'AltRight'].includes(key.dataset.code)) {
+      isAltOn = !isAltOn
+      console.log(isAltOn)
+    }
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
       toggleShift()
     }
@@ -66,6 +77,10 @@ const Keyboard = () => {
     key.classList.remove('keyboard__key--pressed');
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
       toggleShift()
+    }
+    if (['AltLeft', 'AltRight'].includes(key.dataset.code)) {
+      isAltOn = !isAltOn
+      console.log(isAltOn)
     }
   };
 
@@ -80,22 +95,23 @@ const Keyboard = () => {
     }
     if (['ShiftLeft', 'ShiftRight'].includes(e.target.dataset.code)) {
       toggleShift()
+    } 
+    if (['AltLeft', 'AltRight'].includes(e.target.dataset.code)) {
+      isAltOn = !isAltOn
+      console.log(isAltOn)
     }
   };
 
   const handleTransitionEnd = (e) => {
-    // pressed class stays on clicked shift keys
+    // pressed class stays on some clicked keys
     // on clicked event keys detransition immediately instead of on keyup
     if (
-      !['ShiftLeft', 'ShiftRight'].includes(e.target.dataset.code)
+      !['ShiftLeft', 'ShiftRight', 'AltLeft', 'AltRight'].includes(e.target.dataset.code)
       && lastEvent === 'click'
     ) {
       e.target.classList.remove('keyboard__key--pressed');
     }
   };
-
-  window.addEventListener('keydown', handleKeyDown);
-  window.addEventListener('keyup', handleKeyUp);
 
   const create = () => {
     const wrapper = document.createElement('div');
@@ -137,6 +153,8 @@ const Keyboard = () => {
 
     keyboard.addEventListener('click', handleKeyClick);
     keyboard.addEventListener('transitionend', handleTransitionEnd);
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
 
     return wrapper;
   };
