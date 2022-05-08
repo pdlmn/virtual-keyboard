@@ -6,6 +6,35 @@ const Keyboard = () => {
   let lastEvent = '';
   const currentLanguage = 'en';
 
+  const changeCapitalizationKeyLetters = () => {
+    codes.forEach((row) => {
+      row.forEach((key) => {
+        // in both languages if array of symbols for key is equal to one
+        // that means that it's a letter that can be capitalized
+        if (key[currentLanguage] && key[currentLanguage].length === 1) {
+          const keyEl = document.querySelector(`[data-code="${key.code}"]`);
+          keyEl.textContent = ((isShiftOn && !isCapsOn) || (!isShiftOn && isCapsOn))
+            ? keyEl.textContent.toUpperCase()
+            : keyEl.textContent.toLowerCase();
+        }
+      });
+    });
+  };
+
+  const changeToAlternateSymbol = () => {
+    codes.forEach((row) => {
+      row.forEach((key) => {
+        // if one key has more than one symbol
+        if (key[currentLanguage] && key[currentLanguage].length > 1) {
+          const keyEl = document.querySelector(`[data-code="${key.code}"]`);
+          keyEl.textContent = (isShiftOn)
+            ? key[currentLanguage][1]
+            : key[currentLanguage][0];
+        }
+      });
+    });
+  };
+
   const handleKeyDown = (e) => {
     e.preventDefault();
     lastEvent = e.type;
@@ -20,7 +49,7 @@ const Keyboard = () => {
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
       isShiftOn = !isShiftOn;
       changeCapitalizationKeyLetters();
-      console.log(isShiftOn);
+      changeToAlternateSymbol();
     }
   };
 
@@ -30,23 +59,8 @@ const Keyboard = () => {
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
       isShiftOn = !isShiftOn;
       changeCapitalizationKeyLetters();
-      console.log(isShiftOn);
+      changeToAlternateSymbol();
     }
-  };
-
-  const changeCapitalizationKeyLetters = () => {
-    codes.forEach((row) => {
-      row.forEach((key) => {
-        // in both languages if array of symbols for key is equal to one
-        // that means that it's a letter that can be capitalized
-        if (key[currentLanguage] && key[currentLanguage].length === 1) {
-          const keyEl = document.querySelector(`[data-code="${key.code}"]`);
-          keyEl.textContent = (isShiftOn && !isCapsOn || !isShiftOn && isCapsOn)
-            ? keyEl.textContent.toUpperCase()
-            : keyEl.textContent.toLowerCase();
-        }
-      });
-    });
   };
 
   const handleKeyClick = (e) => {
@@ -62,7 +76,7 @@ const Keyboard = () => {
     if (['ShiftLeft', 'ShiftRight'].includes(e.target.dataset.code)) {
       isShiftOn = !isShiftOn;
       changeCapitalizationKeyLetters();
-      console.log(isShiftOn);
+      changeToAlternateSymbol();
     }
   };
 
@@ -70,8 +84,8 @@ const Keyboard = () => {
     // pressed class stays on clicked shift keys
     // on clicked event keys detransition immediately instead of on keyup
     if (
-      !['ShiftLeft', 'ShiftRight'].includes(e.target.dataset.code) &&
-      lastEvent === 'click'
+      !['ShiftLeft', 'ShiftRight'].includes(e.target.dataset.code)
+      && lastEvent === 'click'
     ) {
       e.target.classList.remove('keyboard__key--pressed');
     }
