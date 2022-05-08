@@ -71,7 +71,7 @@ const codes = [
     { code: 'AltRight', name: 'Alt' },
     { code: 'ControlRight', name: 'Ctrl' },
     { code: 'ArrowLeft', name: '<' },
-    { code: 'ArrowDown', name: '^' },
+    { code: 'ArrowDown', name: '˅' },
     { code: 'ArrowRight', name: '>' },
   ],
 ];

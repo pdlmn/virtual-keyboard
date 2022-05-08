@@ -1,52 +1,54 @@
 import codes from './codes';
 
 const Keyboard = () => {
+  const isShiftOn = false;
+  const isCapsOn = false;
+
   const addKeyAnimation = (e) => {
-    // console.log(e)
-    e.preventDefault()
-    document.querySelector(`[data-code="${e.code}"]`)
-      .classList.add('keyboard__key--pressed')
-  }
+    e.preventDefault();
+    const key = document.querySelector(`[data-code="${e.code}"]`);
+    key.classList.add('keyboard__key--pressed');
+  };
 
   const removeKeyAnimation = (e) => {
-    e.target
-      .classList.remove('keyboard__key--pressed')
-  }
+    const key = document.querySelector(`[data-code="${e.code}"]`)
+    key.classList.remove('keyboard__key--pressed');
+  };
 
   const create = () => {
     const wrapper = document.createElement('div');
     const keyboard = document.createElement('div');
 
-    window.addEventListener('keyup', addKeyAnimation)
-    keyboard.addEventListener('transitionend', removeKeyAnimation)
+    window.addEventListener('keydown', addKeyAnimation);
+    window.addEventListener('keyup', removeKeyAnimation);
 
     wrapper.classList.add('wrapper');
     keyboard.classList.add('keyboard');
 
-    wrapper.append(keyboard)
+    wrapper.append(keyboard);
 
     codes.forEach((row) => {
       const rowEl = document.createElement('div');
       rowEl.classList.add('keyboard__row');
-      
-      keyboard.append(rowEl)
+
+      keyboard.append(rowEl);
       row.forEach((key) => {
         const keyEl = document.createElement('div');
         keyEl.dataset.code = key.code;
         keyEl.classList.add('keyboard__key');
 
         if (key.name) {
-          keyEl.textContent = key.name
-          keyEl.classList.add('keyboard__key--dark')
+          keyEl.textContent = key.name;
+          keyEl.classList.add('keyboard__key--dark');
         } else {
-          keyEl.textContent = key.en[0]
+          [keyEl.textContent] = key.en;
         }
 
         if (['Backspace', 'Tab', 'Enter', 'ShiftLeft', 'Space'].includes(key.code)) {
-          keyEl.classList.add('keyboard__key--grow-1')
+          keyEl.classList.add('keyboard__key--grow-1');
         }
 
-        rowEl.append(keyEl)
+        rowEl.append(keyEl);
       });
     });
 
@@ -64,6 +66,6 @@ const Keyboard = () => {
 };
 
 const keyboard = Keyboard();
-document.body.append(keyboard.create())
+document.body.append(keyboard.create());
 
 export default Keyboard;
