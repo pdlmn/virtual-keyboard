@@ -35,6 +35,17 @@ const Keyboard = () => {
     });
   };
 
+  const toggleCaps = () => {
+    isCapsOn = !isCapsOn;
+    changeCapitalizationKeyLetters();
+  }
+
+  const toggleShift = () => {
+    isShiftOn = !isShiftOn;
+    changeCapitalizationKeyLetters()
+    changeToAlternateSymbol()
+  }
+
   const handleKeyDown = (e) => {
     e.preventDefault();
     lastEvent = e.type;
@@ -43,13 +54,10 @@ const Keyboard = () => {
 
     if (key.dataset.code === 'CapsLock') {
       key.classList.toggle('keyboard__key--toggled-on');
-      isCapsOn = !isCapsOn;
-      changeCapitalizationKeyLetters();
+      toggleCaps()
     }
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
-      isShiftOn = !isShiftOn;
-      changeCapitalizationKeyLetters();
-      changeToAlternateSymbol();
+      toggleShift()
     }
   };
 
@@ -57,9 +65,7 @@ const Keyboard = () => {
     const key = document.querySelector(`[data-code="${e.code}"]`);
     key.classList.remove('keyboard__key--pressed');
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
-      isShiftOn = !isShiftOn;
-      changeCapitalizationKeyLetters();
-      changeToAlternateSymbol();
+      toggleShift()
     }
   };
 
@@ -70,13 +76,10 @@ const Keyboard = () => {
     }
     if (e.target.dataset.code === 'CapsLock') {
       e.target.classList.toggle('keyboard__key--toggled-on');
-      isCapsOn = !isCapsOn;
-      changeCapitalizationKeyLetters();
+      toggleCaps()
     }
     if (['ShiftLeft', 'ShiftRight'].includes(e.target.dataset.code)) {
-      isShiftOn = !isShiftOn;
-      changeCapitalizationKeyLetters();
-      changeToAlternateSymbol();
+      toggleShift()
     }
   };
 
