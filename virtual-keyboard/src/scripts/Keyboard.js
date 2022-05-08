@@ -5,7 +5,7 @@ const Keyboard = () => {
   let isCapsOn = false;
   let isAltOn = false;
   let lastEvent = '';
-  let currentLanguage = 'en';
+  let currentLanguage = 'ru';
 
   const toggleLetterCapitalization = () => {
     codes.forEach((row) => {
@@ -26,32 +26,39 @@ const Keyboard = () => {
     codes.forEach((row) => {
       row.forEach((key) => {
         // if one key has more than one symbol
+        const keyEl = document.querySelector(`[data-code="${key.code}"]`);
         if (key[currentLanguage] && key[currentLanguage].length > 1) {
-          const keyEl = document.querySelector(`[data-code="${key.code}"]`);
           keyEl.textContent = (isShiftOn)
             ? key[currentLanguage][1]
             : key[currentLanguage][0];
+        }
+        // if not Russian symbols for this key and not key like backspace
+        // should defult to symbols from English
+        if (!key[currentLanguage] && !key.name) {
+          keyEl.textContent = (isShiftOn)
+            ? key.en[1]
+            : key.en[0];
         }
       });
     });
   };
 
   const toggleLanguage = () => {
-    currentLanguage = currentLanguage === 'en'
+    currentLanguage = (currentLanguage === 'en')
       ? 'ru'
-      : 'en'
-  }
+      : 'en';
+  };
 
   const toggleCaps = () => {
     isCapsOn = !isCapsOn;
     toggleLetterCapitalization();
-  }
+  };
 
   const toggleShift = () => {
     isShiftOn = !isShiftOn;
-    toggleLetterCapitalization()
-    toggleKeySymbols()
-  }
+    toggleLetterCapitalization();
+    toggleKeySymbols();
+  };
 
   const handleKeyDown = (e) => {
     e.preventDefault();
@@ -61,14 +68,14 @@ const Keyboard = () => {
 
     if (key.dataset.code === 'CapsLock') {
       key.classList.toggle('keyboard__key--toggled-on');
-      toggleCaps()
+      toggleCaps();
     }
     if (['AltLeft', 'AltRight'].includes(key.dataset.code)) {
-      isAltOn = !isAltOn
-      console.log(isAltOn)
+      isAltOn = !isAltOn;
+      console.log(isAltOn);
     }
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
-      toggleShift()
+      toggleShift();
     }
   };
 
@@ -76,11 +83,11 @@ const Keyboard = () => {
     const key = document.querySelector(`[data-code="${e.code}"]`);
     key.classList.remove('keyboard__key--pressed');
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
-      toggleShift()
+      toggleShift();
     }
     if (['AltLeft', 'AltRight'].includes(key.dataset.code)) {
-      isAltOn = !isAltOn
-      console.log(isAltOn)
+      isAltOn = !isAltOn;
+      console.log(isAltOn);
     }
   };
 
@@ -91,14 +98,14 @@ const Keyboard = () => {
     }
     if (e.target.dataset.code === 'CapsLock') {
       e.target.classList.toggle('keyboard__key--toggled-on');
-      toggleCaps()
+      toggleCaps();
     }
     if (['ShiftLeft', 'ShiftRight'].includes(e.target.dataset.code)) {
-      toggleShift()
-    } 
+      toggleShift();
+    }
     if (['AltLeft', 'AltRight'].includes(e.target.dataset.code)) {
-      isAltOn = !isAltOn
-      console.log(isAltOn)
+      isAltOn = !isAltOn;
+      console.log(isAltOn);
     }
   };
 
@@ -136,7 +143,11 @@ const Keyboard = () => {
           keyEl.textContent = key.name;
           keyEl.classList.add('keyboard__key--dark');
         } else {
-          [keyEl.textContent] = key.en;
+          if (key.ru) {
+            [keyEl.textContent] = key.ru;
+          } else {
+            [keyEl.textContent] = key.en;
+          }
         }
 
         if (key.code === 'CapsLock') {
