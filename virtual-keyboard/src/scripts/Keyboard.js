@@ -1,7 +1,7 @@
 import codes from './codes';
 
 const Keyboard = () => {
-  const isShiftOn = false;
+  let isShiftOn = false;
   let isCapsOn = false;
   const currentLanguage = 'en';
 
@@ -14,25 +14,40 @@ const Keyboard = () => {
       key.classList.toggle('keyboard__key--toggled-on');
       isCapsOn = !isCapsOn;
     }
+    if ([ 'ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
+      isShiftOn = !isShiftOn
+      console.log(isShiftOn)
+    }
   };
 
   const handleKeyUp = (e) => {
     const key = document.querySelector(`[data-code="${e.code}"]`);
     key.classList.remove('keyboard__key--pressed');
+    if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
+      isShiftOn = !isShiftOn
+      console.log(isShiftOn)
+    }
   };
 
   const handleKeyClick = (e) => {
     if (e.target.classList.contains('keyboard__key')) {
-      e.target.classList.add('keyboard__key--pressed');
+      e.target.classList.toggle('keyboard__key--pressed');
     }
     if (e.target.dataset.code === 'CapsLock') {
       e.target.classList.toggle('keyboard__key--toggled-on');
       isCapsOn = !isCapsOn;
     }
+    if (['ShiftLeft', 'ShiftRight'].includes(e.target.dataset.code)) {
+      isShiftOn = !isShiftOn
+      console.log(isShiftOn)
+    }
   };
 
   const handleTransitionEnd = (e) => {
-    e.target.classList.remove('keyboard__key--pressed');
+    // pressed class stays on shift keys
+    if (!['ShiftLeft', 'ShiftRight'].includes(e.target.dataset.code)) {
+      e.target.classList.remove('keyboard__key--pressed');
+    }
   };
 
   window.addEventListener('keydown', handleKeyDown);
