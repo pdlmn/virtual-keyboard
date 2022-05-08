@@ -47,6 +47,7 @@ const Keyboard = () => {
     currentLanguage = (currentLanguage === 'en')
       ? 'ru'
       : 'en';
+    addKeyLetters();
   };
 
   const toggleCaps = () => {
@@ -70,12 +71,11 @@ const Keyboard = () => {
       key.classList.toggle('keyboard__key--toggled-on');
       toggleCaps();
     }
-    if (['AltLeft', 'AltRight'].includes(key.dataset.code)) {
-      isAltOn = !isAltOn;
-      console.log(isAltOn);
-    }
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
       toggleShift();
+    }
+    if (e.altKey && e.shiftKey) {
+      toggleLanguage();
     }
   };
 
@@ -84,10 +84,6 @@ const Keyboard = () => {
     key.classList.remove('keyboard__key--pressed');
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
       toggleShift();
-    }
-    if (['AltLeft', 'AltRight'].includes(key.dataset.code)) {
-      isAltOn = !isAltOn;
-      console.log(isAltOn);
     }
   };
 
@@ -105,8 +101,30 @@ const Keyboard = () => {
     }
     if (['AltLeft', 'AltRight'].includes(e.target.dataset.code)) {
       isAltOn = !isAltOn;
-      console.log(isAltOn);
     }
+    if (isShiftOn && isAltOn) {
+      toggleLanguage()
+      isShiftOn = false;
+      isAltOn = false;
+      document.querySelectorAll('.keyboard__key--pressed')
+        .forEach((key) => key.classList.remove('keyboard__key--pressed'))
+      toggleLetterCapitalization()
+    }
+  };
+
+  const addKeyLetters = () => {
+    codes.forEach((row) => {
+      row.forEach((key) => {
+        const keyEl = document.querySelector(`[data-code="${key.code}"]`);
+        if (key.name) {
+          keyEl.textContent = key.name;
+        } else if (currentLanguage === 'ru' && key.ru) {
+          [keyEl.textContent] = key.ru;
+        } else {
+          [keyEl.textContent] = key.en;
+        }
+      });
+    });
   };
 
   const handleTransitionEnd = (e) => {
@@ -142,12 +160,10 @@ const Keyboard = () => {
         if (key.name) {
           keyEl.textContent = key.name;
           keyEl.classList.add('keyboard__key--dark');
+        } else if (currentLanguage === 'ru' && key.ru) {
+          [keyEl.textContent] = key.ru;
         } else {
-          if (key.ru) {
-            [keyEl.textContent] = key.ru;
-          } else {
-            [keyEl.textContent] = key.en;
-          }
+          [keyEl.textContent] = key.en;
         }
 
         if (key.code === 'CapsLock') {
