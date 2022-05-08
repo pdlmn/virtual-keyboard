@@ -5,7 +5,7 @@ const Keyboard = () => {
   let isCapsOn = false;
   let isAltOn = false;
   let lastEvent = '';
-  let currentLanguage = 'ru';
+  let currentLanguage = localStorage.getItem('language') || 'ru';
 
   const toggleLetterCapitalization = () => {
     codes.forEach((row) => {
@@ -48,6 +48,7 @@ const Keyboard = () => {
       ? 'ru'
       : 'en';
     addKeyLetters();
+    localStorage.setItem('language', currentLanguage);
   };
 
   const toggleCaps = () => {
