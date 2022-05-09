@@ -1,6 +1,7 @@
 import codes from './codes';
 
-const Keyboard = () => {
+const Keyboard = (textarea) => {
+  const input = textarea;
   let isShiftOn = false;
   let isCapsOn = false;
   let isAltOn = false;
@@ -43,6 +44,21 @@ const Keyboard = () => {
     });
   };
 
+  const addKeyLetters = (el = document) => {
+    codes.forEach((row) => {
+      row.forEach((key) => {
+        const keyEl = el.querySelector(`[data-code="${key.code}"]`);
+        if (key.name) {
+          keyEl.textContent = key.name;
+        } else if (currentLanguage === 'ru' && key.ru) {
+          [keyEl.textContent] = key.ru;
+        } else {
+          [keyEl.textContent] = key.en;
+        }
+      });
+    });
+  };
+
   const toggleLanguage = () => {
     currentLanguage = (currentLanguage === 'en')
       ? 'ru'
@@ -62,11 +78,29 @@ const Keyboard = () => {
     toggleKeySymbols();
   };
 
+  const isForInput = (code) => code.includes('Key')
+    || code.includes('Digit')
+    || [
+      'Backquote',
+      'Minus',
+      'Equal',
+      'BracketLeft',
+      'BracketRight',
+      'Backslash',
+      'Semicolon',
+      'Quote',
+      'Comma',
+      'Period',
+      'Slash',
+    ].includes(code);
+
   const handleKeyDown = (e) => {
     e.preventDefault();
     lastEvent = e.type;
     const key = document.querySelector(`[data-code="${e.code}"]`);
+    if (!key) return;
     key.classList.add('keyboard__key--pressed');
+    input.focus();
 
     if (key.dataset.code === 'CapsLock') {
       key.classList.toggle('keyboard__key--toggled-on');
@@ -78,10 +112,55 @@ const Keyboard = () => {
     if (e.altKey && e.shiftKey) {
       toggleLanguage();
     }
+    if (isForInput(e.code)) {
+      input.value += key.textContent;
+    }
+    if (e.code === 'Enter') {
+      input.value += '\n';
+    }
+    if (e.code === 'Backspace') {
+      input.value = input.value.slice(0, -1);
+    }
+    if (e.code === 'Tab') {
+      input.value += '\t';
+    }
+    if (e.code === 'ArrowLeft') {
+      const newPosition = input.selectionStart - 1;
+      if (newPosition >= 0) input.setSelectionRange(newPosition, newPosition);
+      console.log(input.selectionStart);
+    }
+    if (e.code === 'ArrowRight') {
+      const newPosition = input.selectionStart + 1;
+      input.setSelectionRange(newPosition, newPosition);
+      console.log(input.selectionStart);
+    }
+    if (e.code === 'ArrowDown') {
+      const nextLineBreak = input.value.indexOf('\n', input.selectionStart);
+      let newPosition;
+      // if no next lines
+      if (nextLineBreak + 1 === 0) {
+        newPosition = input.value.length;
+      } else {
+        newPosition = nextLineBreak + 1;
+      }
+      input.setSelectionRange(newPosition, newPosition);
+    }
+    if (e.code === 'ArrowUp') {
+      const prevLineBreak = input.value.lastIndexOf('\n', input.selectionStart - 1);
+      console.log(prevLineBreak)
+      let newPosition;
+      if (prevLineBreak >= 0) {
+        newPosition = prevLineBreak;
+      } else {
+        newPosition = 0;
+      }
+      input.setSelectionRange(newPosition, newPosition);
+    }
   };
 
   const handleKeyUp = (e) => {
     const key = document.querySelector(`[data-code="${e.code}"]`);
+    if (!key) return;
     key.classList.remove('keyboard__key--pressed');
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
       toggleShift();
@@ -104,28 +183,13 @@ const Keyboard = () => {
       isAltOn = !isAltOn;
     }
     if (isShiftOn && isAltOn) {
-      toggleLanguage()
+      toggleLanguage();
       isShiftOn = false;
       isAltOn = false;
       document.querySelectorAll('.keyboard__key--pressed')
-        .forEach((key) => key.classList.remove('keyboard__key--pressed'))
-      toggleLetterCapitalization()
+        .forEach((key) => key.classList.remove('keyboard__key--pressed'));
+      toggleLetterCapitalization();
     }
-  };
-
-  const addKeyLetters = () => {
-    codes.forEach((row) => {
-      row.forEach((key) => {
-        const keyEl = document.querySelector(`[data-code="${key.code}"]`);
-        if (key.name) {
-          keyEl.textContent = key.name;
-        } else if (currentLanguage === 'ru' && key.ru) {
-          [keyEl.textContent] = key.ru;
-        } else {
-          [keyEl.textContent] = key.en;
-        }
-      });
-    });
   };
 
   const handleTransitionEnd = (e) => {
@@ -146,6 +210,7 @@ const Keyboard = () => {
     wrapper.classList.add('wrapper');
     keyboard.classList.add('keyboard');
 
+    wrapper.append(textarea);
     wrapper.append(keyboard);
 
     codes.forEach((row) => {
@@ -159,14 +224,8 @@ const Keyboard = () => {
         keyEl.classList.add('keyboard__key');
 
         if (key.name) {
-          keyEl.textContent = key.name;
           keyEl.classList.add('keyboard__key--dark');
-        } else if (currentLanguage === 'ru' && key.ru) {
-          [keyEl.textContent] = key.ru;
-        } else {
-          [keyEl.textContent] = key.en;
         }
-
         if (key.code === 'CapsLock') {
           keyEl.classList.add('keyboard__key--toggled');
         }
@@ -179,6 +238,7 @@ const Keyboard = () => {
       });
     });
 
+    addKeyLetters(keyboard);
     keyboard.addEventListener('click', handleKeyClick);
     keyboard.addEventListener('transitionend', handleTransitionEnd);
     window.addEventListener('keydown', handleKeyDown);
@@ -187,17 +247,9 @@ const Keyboard = () => {
     return wrapper;
   };
 
-  // window.addEventListener('keydown', (e) => {
-  //   // console.log(`key: ${e.key}`)
-  //   console.log(`code: ${e.code}`);
-  // });
-
   return {
     create,
   };
 };
-
-const keyboard = Keyboard();
-document.body.append(keyboard.create());
 
 export default Keyboard;

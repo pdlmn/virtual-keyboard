@@ -1,4 +1,7 @@
 import './sass/main.scss';
-import './scripts/Keyboard';
+import Keyboard from './scripts/Keyboard';
+import Textarea from './scripts/Textarea';
 
-console.log('lmao');
+const keyboard = Keyboard(Textarea());
+const keyboardEl = keyboard.create();
+document.body.append(keyboardEl);

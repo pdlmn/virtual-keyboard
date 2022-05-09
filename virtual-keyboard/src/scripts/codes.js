@@ -41,7 +41,7 @@ const codes = [
     { code: 'KeyG', en: ['g'], ru: ['п'] },
     { code: 'KeyH', en: ['h'], ru: ['р'] },
     { code: 'KeyJ', en: ['j'], ru: ['о'] },
-    { code: 'KeyK', en: ['k'], ru: ['k'] },
+    { code: 'KeyK', en: ['k'], ru: ['л'] },
     { code: 'KeyL', en: ['l'], ru: ['д'] },
     { code: 'Semicolon', en: [';', ':'], ru: ['ж'] },
     { code: 'Quote', en: ["'", '"'], ru: ['э'] },
