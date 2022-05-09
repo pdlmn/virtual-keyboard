@@ -153,12 +153,10 @@ const Keyboard = (textarea) => {
     if (e.code === 'ArrowLeft') {
       const newPosition = input.selectionStart - 1;
       if (newPosition >= 0) input.setSelectionRange(newPosition, newPosition);
-      console.log(input.selectionStart);
     }
     if (e.code === 'ArrowRight') {
       const newPosition = input.selectionStart + 1;
       input.setSelectionRange(newPosition, newPosition);
-      console.log(input.selectionStart);
     }
     if (e.code === 'ArrowDown') {
       const nextLineBreak = input.value.indexOf('\n', input.selectionStart);
@@ -173,7 +171,6 @@ const Keyboard = (textarea) => {
     }
     if (e.code === 'ArrowUp') {
       const prevLineBreak = input.value.lastIndexOf('\n', input.selectionStart - 1);
-      console.log(prevLineBreak)
       let newPosition;
       if (prevLineBreak >= 0) {
         newPosition = prevLineBreak;
@@ -216,10 +213,9 @@ const Keyboard = (textarea) => {
       isShiftOn = false;
       isAltOn = false;
       document.querySelectorAll('.keyboard__key--pressed')
-        .forEach((key) => key.classList.remove('keyboard__key--pressed'));
+        .forEach((keyEl) => keyEl.classList.remove('keyboard__key--pressed'));
       toggleLetterCapitalization();
     }
-    console.log(key.dataset.code)
     if (isForInput(key.dataset.code)) {
       const currPosition = input.selectionStart;
       input.value = insert(input.value, currPosition, key.textContent);
@@ -257,12 +253,10 @@ const Keyboard = (textarea) => {
     if (key.dataset.code === 'ArrowLeft') {
       const newPosition = input.selectionStart - 1;
       if (newPosition >= 0) input.setSelectionRange(newPosition, newPosition);
-      console.log(input.selectionStart);
     }
     if (key.dataset.code === 'ArrowRight') {
       const newPosition = input.selectionStart + 1;
       input.setSelectionRange(newPosition, newPosition);
-      console.log(input.selectionStart);
     }
     if (key.dataset.code === 'ArrowDown') {
       const nextLineBreak = input.value.indexOf('\n', input.selectionStart);
@@ -277,7 +271,6 @@ const Keyboard = (textarea) => {
     }
     if (key.dataset.code === 'ArrowUp') {
       const prevLineBreak = input.value.lastIndexOf('\n', input.selectionStart - 1);
-      console.log(prevLineBreak)
       let newPosition;
       if (prevLineBreak >= 0) {
         newPosition = prevLineBreak;
