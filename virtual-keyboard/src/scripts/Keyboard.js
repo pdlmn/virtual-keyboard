@@ -78,6 +78,10 @@ const Keyboard = (textarea) => {
     toggleKeySymbols();
   };
 
+  const insert = (str, i = 0, substr = '') => str.slice(0, i) + substr + str.slice(i);
+
+  const deleteAt = (str, i = 0) => str.slice(0, i) + str.slice(i + 1);
+
   const isForInput = (code) => code.includes('Key')
     || code.includes('Digit')
     || [
@@ -113,16 +117,38 @@ const Keyboard = (textarea) => {
       toggleLanguage();
     }
     if (isForInput(e.code)) {
-      input.value += key.textContent;
+      const currPosition = input.selectionStart;
+      input.value = insert(input.value, currPosition, key.textContent);
+      // otherwise text-cursor will return  to the end
+      input.setSelectionRange(currPosition + 1, currPosition + 1);
     }
     if (e.code === 'Enter') {
-      input.value += '\n';
+      const currPosition = input.selectionStart;
+      input.value = insert(input.value, currPosition, '\n');
+      input.setSelectionRange(currPosition + 1, currPosition + 1);
     }
     if (e.code === 'Backspace') {
-      input.value = input.value.slice(0, -1);
+      const currPosition = input.selectionStart;
+      if (currPosition === 0) return;
+
+      input.value = deleteAt(input.value, currPosition - 1);
+      let newPosition;
+      if (currPosition - 1 <= 0) {
+        newPosition = 0;
+      } else {
+        newPosition = currPosition - 1;
+      }
+      input.setSelectionRange(newPosition, newPosition);
+    }
+    if (e.code === 'Delete') {
+      const currPosition = input.selectionStart;
+      input.value = deleteAt(input.value, currPosition);
+      input.setSelectionRange(currPosition, currPosition);
     }
     if (e.code === 'Tab') {
-      input.value += '\t';
+      const currPosition = input.selectionStart;
+      input.value = insert(input.value, currPosition, '\t');
+      input.setSelectionRange(currPosition + 1, currPosition + 1);
     }
     if (e.code === 'ArrowLeft') {
       const newPosition = input.selectionStart - 1;
@@ -168,18 +194,21 @@ const Keyboard = (textarea) => {
   };
 
   const handleKeyClick = (e) => {
+    const key = e.target;
+    if (!key.dataset.code) return;
     lastEvent = e.type;
-    if (e.target.classList.contains('keyboard__key')) {
-      e.target.classList.toggle('keyboard__key--pressed');
+    input.focus();
+    if (key.classList.contains('keyboard__key')) {
+      key.classList.toggle('keyboard__key--pressed');
     }
-    if (e.target.dataset.code === 'CapsLock') {
-      e.target.classList.toggle('keyboard__key--toggled-on');
+    if (key.dataset.code === 'CapsLock') {
+      key.classList.toggle('keyboard__key--toggled-on');
       toggleCaps();
     }
-    if (['ShiftLeft', 'ShiftRight'].includes(e.target.dataset.code)) {
+    if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
       toggleShift();
     }
-    if (['AltLeft', 'AltRight'].includes(e.target.dataset.code)) {
+    if (['AltLeft', 'AltRight'].includes(key.dataset.code)) {
       isAltOn = !isAltOn;
     }
     if (isShiftOn && isAltOn) {
@@ -189,6 +218,73 @@ const Keyboard = (textarea) => {
       document.querySelectorAll('.keyboard__key--pressed')
         .forEach((key) => key.classList.remove('keyboard__key--pressed'));
       toggleLetterCapitalization();
+    }
+    console.log(key.dataset.code)
+    if (isForInput(key.dataset.code)) {
+      const currPosition = input.selectionStart;
+      input.value = insert(input.value, currPosition, key.textContent);
+      // otherwise text-cursor will return  to the end
+      input.setSelectionRange(currPosition + 1, currPosition + 1);
+    }
+    if (key.dataset.code === 'Enter') {
+      const currPosition = input.selectionStart;
+      input.value = insert(input.value, currPosition, '\n');
+      input.setSelectionRange(currPosition + 1, currPosition + 1);
+    }
+    if (key.dataset.code === 'Backspace') {
+      const currPosition = input.selectionStart;
+      if (currPosition === 0) return;
+
+      input.value = deleteAt(input.value, currPosition - 1);
+      let newPosition;
+      if (currPosition - 1 <= 0) {
+        newPosition = 0;
+      } else {
+        newPosition = currPosition - 1;
+      }
+      input.setSelectionRange(newPosition, newPosition);
+    }
+    if (key.dataset.code === 'Delete') {
+      const currPosition = input.selectionStart;
+      input.value = deleteAt(input.value, currPosition);
+      input.setSelectionRange(currPosition, currPosition);
+    }
+    if (key.dataset.code === 'Tab') {
+      const currPosition = input.selectionStart;
+      input.value = insert(input.value, currPosition, '\t');
+      input.setSelectionRange(currPosition + 1, currPosition + 1);
+    }
+    if (key.dataset.code === 'ArrowLeft') {
+      const newPosition = input.selectionStart - 1;
+      if (newPosition >= 0) input.setSelectionRange(newPosition, newPosition);
+      console.log(input.selectionStart);
+    }
+    if (key.dataset.code === 'ArrowRight') {
+      const newPosition = input.selectionStart + 1;
+      input.setSelectionRange(newPosition, newPosition);
+      console.log(input.selectionStart);
+    }
+    if (key.dataset.code === 'ArrowDown') {
+      const nextLineBreak = input.value.indexOf('\n', input.selectionStart);
+      let newPosition;
+      // if no next lines
+      if (nextLineBreak + 1 === 0) {
+        newPosition = input.value.length;
+      } else {
+        newPosition = nextLineBreak + 1;
+      }
+      input.setSelectionRange(newPosition, newPosition);
+    }
+    if (key.dataset.code === 'ArrowUp') {
+      const prevLineBreak = input.value.lastIndexOf('\n', input.selectionStart - 1);
+      console.log(prevLineBreak)
+      let newPosition;
+      if (prevLineBreak >= 0) {
+        newPosition = prevLineBreak;
+      } else {
+        newPosition = 0;
+      }
+      input.setSelectionRange(newPosition, newPosition);
     }
   };
 
