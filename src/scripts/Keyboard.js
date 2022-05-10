@@ -110,7 +110,53 @@ const Keyboard = (textarea) => {
       key.classList.toggle('keyboard__key--toggled-on');
       toggleCaps();
     },
-    
+    Backspace: () => {
+      const currPosition = input.selectionStart;
+      if (currPosition === 0) return;
+
+      input.value = deleteAt(input.value, currPosition - 1);
+      let newPosition;
+      if (currPosition - 1 <= 0) {
+        newPosition = 0;
+      } else {
+        newPosition = currPosition - 1;
+      }
+      input.setSelectionRange(newPosition, newPosition);
+    },
+    Delete: () => {
+      const currPosition = input.selectionStart;
+      input.value = deleteAt(input.value, currPosition);
+      input.setSelectionRange(currPosition, currPosition);
+    },
+    ArrowLeft: () => {
+      const newPosition = input.selectionStart - 1;
+      if (newPosition >= 0) input.setSelectionRange(newPosition, newPosition);
+    },
+    ArrowRight: () => {
+      const newPosition = input.selectionStart + 1;
+      input.setSelectionRange(newPosition, newPosition);
+    },
+    ArrowDown: () => {
+      const nextLineBreak = input.value.indexOf('\n', input.selectionStart);
+      let newPosition;
+      // if no next lines
+      if (nextLineBreak + 1 === 0) {
+        newPosition = input.value.length;
+      } else {
+        newPosition = nextLineBreak + 1;
+      }
+      input.setSelectionRange(newPosition, newPosition);
+    },
+    ArrowUp: () => {
+      const prevLineBreak = input.value.lastIndexOf('\n', input.selectionStart - 1);
+      let newPosition;
+      if (prevLineBreak >= 0) {
+        newPosition = prevLineBreak;
+      } else {
+        newPosition = 0;
+      }
+      input.setSelectionRange(newPosition, newPosition);
+    },
   };
 
   const handleKeyDown = (e) => {
@@ -143,53 +189,6 @@ const Keyboard = (textarea) => {
     if (e.code === 'Tab') {
       inputSymbol('\t');
     }
-    if (e.code === 'Backspace') {
-      const currPosition = input.selectionStart;
-      if (currPosition === 0) return;
-
-      input.value = deleteAt(input.value, currPosition - 1);
-      let newPosition;
-      if (currPosition - 1 <= 0) {
-        newPosition = 0;
-      } else {
-        newPosition = currPosition - 1;
-      }
-      input.setSelectionRange(newPosition, newPosition);
-    }
-    if (e.code === 'Delete') {
-      const currPosition = input.selectionStart;
-      input.value = deleteAt(input.value, currPosition);
-      input.setSelectionRange(currPosition, currPosition);
-    }
-    if (e.code === 'ArrowLeft') {
-      const newPosition = input.selectionStart - 1;
-      if (newPosition >= 0) input.setSelectionRange(newPosition, newPosition);
-    }
-    if (e.code === 'ArrowRight') {
-      const newPosition = input.selectionStart + 1;
-      input.setSelectionRange(newPosition, newPosition);
-    }
-    if (e.code === 'ArrowDown') {
-      const nextLineBreak = input.value.indexOf('\n', input.selectionStart);
-      let newPosition;
-      // if no next lines
-      if (nextLineBreak + 1 === 0) {
-        newPosition = input.value.length;
-      } else {
-        newPosition = nextLineBreak + 1;
-      }
-      input.setSelectionRange(newPosition, newPosition);
-    }
-    if (e.code === 'ArrowUp') {
-      const prevLineBreak = input.value.lastIndexOf('\n', input.selectionStart - 1);
-      let newPosition;
-      if (prevLineBreak >= 0) {
-        newPosition = prevLineBreak;
-      } else {
-        newPosition = 0;
-      }
-      input.setSelectionRange(newPosition, newPosition);
-    }
   };
 
   const handleKeyUp = (e) => {
@@ -209,9 +208,8 @@ const Keyboard = (textarea) => {
     if (key.classList.contains('keyboard__key')) {
       key.classList.toggle('keyboard__key--pressed');
     }
-    if (key.dataset.code === 'CapsLock') {
-      key.classList.toggle('keyboard__key--toggled-on');
-      toggleCaps();
+    if (operations[key.dataset.code]) {
+      operations[key.dataset.code](key);
     }
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
       toggleShift();
@@ -238,53 +236,6 @@ const Keyboard = (textarea) => {
     }
     if (key.dataset.code === 'Tab') {
       inputSymbol('\t');
-    }
-    if (key.dataset.code === 'Backspace') {
-      const currPosition = input.selectionStart;
-      if (currPosition === 0) return;
-
-      input.value = deleteAt(input.value, currPosition - 1);
-      let newPosition;
-      if (currPosition - 1 <= 0) {
-        newPosition = 0;
-      } else {
-        newPosition = currPosition - 1;
-      }
-      input.setSelectionRange(newPosition, newPosition);
-    }
-    if (key.dataset.code === 'Delete') {
-      const currPosition = input.selectionStart;
-      input.value = deleteAt(input.value, currPosition);
-      input.setSelectionRange(currPosition, currPosition);
-    }
-    if (key.dataset.code === 'ArrowLeft') {
-      const newPosition = input.selectionStart - 1;
-      if (newPosition >= 0) input.setSelectionRange(newPosition, newPosition);
-    }
-    if (key.dataset.code === 'ArrowRight') {
-      const newPosition = input.selectionStart + 1;
-      input.setSelectionRange(newPosition, newPosition);
-    }
-    if (key.dataset.code === 'ArrowDown') {
-      const nextLineBreak = input.value.indexOf('\n', input.selectionStart);
-      let newPosition;
-      // if no next lines
-      if (nextLineBreak + 1 === 0) {
-        newPosition = input.value.length;
-      } else {
-        newPosition = nextLineBreak + 1;
-      }
-      input.setSelectionRange(newPosition, newPosition);
-    }
-    if (key.dataset.code === 'ArrowUp') {
-      const prevLineBreak = input.value.lastIndexOf('\n', input.selectionStart - 1);
-      let newPosition;
-      if (prevLineBreak >= 0) {
-        newPosition = prevLineBreak;
-      } else {
-        newPosition = 0;
-      }
-      input.setSelectionRange(newPosition, newPosition);
     }
   };
 
