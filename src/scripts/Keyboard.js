@@ -122,6 +122,11 @@ const Keyboard = (textarea) => {
       // otherwise text-cursor will return  to the end
       input.setSelectionRange(currPosition + 1, currPosition + 1);
     }
+    if (e.code === 'Space') {
+      const currPosition = input.selectionStart;
+      input.value = insert(input.value, currPosition, ' ');
+      input.setSelectionRange(currPosition + 1, currPosition + 1);
+    }
     if (e.code === 'Enter') {
       const currPosition = input.selectionStart;
       input.value = insert(input.value, currPosition, '\n');
@@ -220,6 +225,11 @@ const Keyboard = (textarea) => {
       const currPosition = input.selectionStart;
       input.value = insert(input.value, currPosition, key.textContent);
       // otherwise text-cursor will return  to the end
+      input.setSelectionRange(currPosition + 1, currPosition + 1);
+    }
+    if (key.dataset.code === 'Space') {
+      const currPosition = input.selectionStart;
+      input.value = insert(input.value, currPosition, ' ');
       input.setSelectionRange(currPosition + 1, currPosition + 1);
     }
     if (key.dataset.code === 'Enter') {
