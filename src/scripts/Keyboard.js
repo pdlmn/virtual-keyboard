@@ -111,6 +111,7 @@ const Keyboard = (textarea) => {
       toggleCaps();
     }
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
+      if (isShiftOn) isShiftOn = false;
       toggleShift();
     }
     if (e.altKey && e.shiftKey) {
