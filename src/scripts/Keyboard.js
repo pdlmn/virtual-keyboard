@@ -98,6 +98,21 @@ const Keyboard = (textarea) => {
       'Slash',
     ].includes(code);
 
+  const inputSymbol = (symbol) => {
+    const currPosition = input.selectionStart;
+    input.value = insert(input.value, currPosition, symbol);
+    // otherwise text-cursor will return  to the end
+    input.setSelectionRange(currPosition + 1, currPosition + 1);
+  };
+
+  const operations = {
+    CapsLock: (key) => {
+      key.classList.toggle('keyboard__key--toggled-on');
+      toggleCaps();
+    },
+    
+  };
+
   const handleKeyDown = (e) => {
     e.preventDefault();
     lastEvent = e.type;
@@ -106,9 +121,8 @@ const Keyboard = (textarea) => {
     key.classList.add('keyboard__key--pressed');
     input.focus();
 
-    if (key.dataset.code === 'CapsLock') {
-      key.classList.toggle('keyboard__key--toggled-on');
-      toggleCaps();
+    if (operations[e.code]) {
+      operations[e.code](key);
     }
     if (['ShiftLeft', 'ShiftRight'].includes(key.dataset.code)) {
       if (isShiftOn) isShiftOn = false;
@@ -118,20 +132,16 @@ const Keyboard = (textarea) => {
       toggleLanguage();
     }
     if (isForInput(e.code)) {
-      const currPosition = input.selectionStart;
-      input.value = insert(input.value, currPosition, key.textContent);
-      // otherwise text-cursor will return  to the end
-      input.setSelectionRange(currPosition + 1, currPosition + 1);
+      inputSymbol(key.textContent);
     }
     if (e.code === 'Space') {
-      const currPosition = input.selectionStart;
-      input.value = insert(input.value, currPosition, ' ');
-      input.setSelectionRange(currPosition + 1, currPosition + 1);
+      inputSymbol(' ');
     }
     if (e.code === 'Enter') {
-      const currPosition = input.selectionStart;
-      input.value = insert(input.value, currPosition, '\n');
-      input.setSelectionRange(currPosition + 1, currPosition + 1);
+      inputSymbol('\n');
+    }
+    if (e.code === 'Tab') {
+      inputSymbol('\t');
     }
     if (e.code === 'Backspace') {
       const currPosition = input.selectionStart;
@@ -150,11 +160,6 @@ const Keyboard = (textarea) => {
       const currPosition = input.selectionStart;
       input.value = deleteAt(input.value, currPosition);
       input.setSelectionRange(currPosition, currPosition);
-    }
-    if (e.code === 'Tab') {
-      const currPosition = input.selectionStart;
-      input.value = insert(input.value, currPosition, '\t');
-      input.setSelectionRange(currPosition + 1, currPosition + 1);
     }
     if (e.code === 'ArrowLeft') {
       const newPosition = input.selectionStart - 1;
@@ -223,20 +228,16 @@ const Keyboard = (textarea) => {
       toggleLetterCapitalization();
     }
     if (isForInput(key.dataset.code)) {
-      const currPosition = input.selectionStart;
-      input.value = insert(input.value, currPosition, key.textContent);
-      // otherwise text-cursor will return  to the end
-      input.setSelectionRange(currPosition + 1, currPosition + 1);
+      inputSymbol(key.textContent);
     }
     if (key.dataset.code === 'Space') {
-      const currPosition = input.selectionStart;
-      input.value = insert(input.value, currPosition, ' ');
-      input.setSelectionRange(currPosition + 1, currPosition + 1);
+      inputSymbol(' ');
     }
     if (key.dataset.code === 'Enter') {
-      const currPosition = input.selectionStart;
-      input.value = insert(input.value, currPosition, '\n');
-      input.setSelectionRange(currPosition + 1, currPosition + 1);
+      inputSymbol('\n');
+    }
+    if (key.dataset.code === 'Tab') {
+      inputSymbol('\t');
     }
     if (key.dataset.code === 'Backspace') {
       const currPosition = input.selectionStart;
@@ -255,11 +256,6 @@ const Keyboard = (textarea) => {
       const currPosition = input.selectionStart;
       input.value = deleteAt(input.value, currPosition);
       input.setSelectionRange(currPosition, currPosition);
-    }
-    if (key.dataset.code === 'Tab') {
-      const currPosition = input.selectionStart;
-      input.value = insert(input.value, currPosition, '\t');
-      input.setSelectionRange(currPosition + 1, currPosition + 1);
     }
     if (key.dataset.code === 'ArrowLeft') {
       const newPosition = input.selectionStart - 1;
